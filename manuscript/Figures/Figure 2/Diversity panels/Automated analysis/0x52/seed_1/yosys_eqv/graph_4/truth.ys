@@ -1,0 +1,21 @@
+read_verilog gate.v
+prep -top gate
+memory_map
+opt -fast
+design -stash TT
+design -copy-from TT -as gate gate
+tee -o tt_0.txt sat -set \_0 0 -set \_1 0 -set \_2 0 -show-ports -show \_11 -dump_json tt_0.json
+design -copy-from TT -as gate gate
+tee -o tt_1.txt sat -set \_0 0 -set \_1 0 -set \_2 1 -show-ports -show \_11 -dump_json tt_1.json
+design -copy-from TT -as gate gate
+tee -o tt_2.txt sat -set \_0 0 -set \_1 1 -set \_2 0 -show-ports -show \_11 -dump_json tt_2.json
+design -copy-from TT -as gate gate
+tee -o tt_3.txt sat -set \_0 0 -set \_1 1 -set \_2 1 -show-ports -show \_11 -dump_json tt_3.json
+design -copy-from TT -as gate gate
+tee -o tt_4.txt sat -set \_0 1 -set \_1 0 -set \_2 0 -show-ports -show \_11 -dump_json tt_4.json
+design -copy-from TT -as gate gate
+tee -o tt_5.txt sat -set \_0 1 -set \_1 0 -set \_2 1 -show-ports -show \_11 -dump_json tt_5.json
+design -copy-from TT -as gate gate
+tee -o tt_6.txt sat -set \_0 1 -set \_1 1 -set \_2 0 -show-ports -show \_11 -dump_json tt_6.json
+design -copy-from TT -as gate gate
+tee -o tt_7.txt sat -set \_0 1 -set \_1 1 -set \_2 1 -show-ports -show \_11 -dump_json tt_7.json

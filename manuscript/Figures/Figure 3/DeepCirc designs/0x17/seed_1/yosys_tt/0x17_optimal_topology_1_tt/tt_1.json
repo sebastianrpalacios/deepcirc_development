@@ -1,0 +1,10 @@
+{ "signal": [
+    { "name": "_2", "wave": "14" },
+    { "name": "_13", "wave": "04" },
+    { "name": "_1", "wave": "04" },
+    { "name": "_0", "wave": "04" }
+  ],
+  "config": {
+    "hscale": 0.25
+  }
+}

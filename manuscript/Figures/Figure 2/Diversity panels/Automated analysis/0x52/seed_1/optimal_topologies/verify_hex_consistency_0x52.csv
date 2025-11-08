@@ -1,0 +1,8 @@
+circuit_hex,graph_index,sim_hex,tt_hex,eq_sim_tt,eq_sim_initial,eq_tt_initial,eq_sim_circuit,eq_tt_circuit,all_equal
+0x52,0,0x52,0x52,True,True,True,True,True,True
+0x52,1,0x52,0x52,True,True,True,True,True,True
+0x52,2,0x52,0x52,True,True,True,True,True,True
+0x52,3,0x52,0x52,True,True,True,True,True,True
+0x52,4,0x52,0x52,True,True,True,True,True,True
+0x52,5,0x52,0x52,True,True,True,True,True,True
+0x52,6,0x52,0x52,True,True,True,True,True,True
