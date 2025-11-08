@@ -1,0 +1,882 @@
+{
+  "timestamp_iso_utc": "2025-10-20T21:49:34.077915+00:00",
+  "cli": {
+    "raw": [
+      "--model_path",
+      "/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/trained_agents/GAT_MLP_with_scalars_4000_logic_functions/trained_model.zip",
+      "--seed_files",
+      "/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/dgd/data/NIGs_3_inputs/0x2B_NIG_unoptimized.pkl",
+      "--output_folder_name",
+      "/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/ex/zero-shot/mp/5120_episodes/sf0/0x2B/seed_1",
+      "--episodes",
+      "5120",
+      "--initial_state_sampling_factor",
+      "0",
+      "--max_steps",
+      "10",
+      "--no_ablation",
+      "--n_envs",
+      "80"
+    ],
+    "flags": {
+      "model_path": [
+        "/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/trained_agents/GAT_MLP_with_scalars_4000_logic_functions/trained_model.zip"
+      ],
+      "seed_files": [
+        "/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/dgd/data/NIGs_3_inputs/0x2B_NIG_unoptimized.pkl"
+      ],
+      "output_folder_name": [
+        "/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/ex/zero-shot/mp/5120_episodes/sf0/0x2B/seed_1"
+      ],
+      "episodes": [
+        "5120"
+      ],
+      "initial_state_sampling_factor": [
+        "0"
+      ],
+      "max_steps": [
+        "10"
+      ],
+      "no_ablation": [
+        true
+      ],
+      "n_envs": [
+        "80"
+      ]
+    },
+    "positionals": []
+  },
+  "imports": [
+    {
+      "name": "IPython",
+      "version": "8.18.1"
+    },
+    {
+      "name": "PIL",
+      "version": "9.5.0"
+    },
+    {
+      "name": "__future__"
+    },
+    {
+      "name": "__main__"
+    },
+    {
+      "name": "__mp_main__"
+    },
+    {
+      "name": "_asyncio"
+    },
+    {
+      "name": "_bisect"
+    },
+    {
+      "name": "_blake2"
+    },
+    {
+      "name": "_bootlocale"
+    },
+    {
+      "name": "_bz2"
+    },
+    {
+      "name": "_collections_abc"
+    },
+    {
+      "name": "_compat_pickle"
+    },
+    {
+      "name": "_compression"
+    },
+    {
+      "name": "_contextvars"
+    },
+    {
+      "name": "_csv",
+      "version": "1.0"
+    },
+    {
+      "name": "_ctypes",
+      "version": "1.1.0"
+    },
+    {
+      "name": "_datetime"
+    },
+    {
+      "name": "_decimal",
+      "version": "1.70"
+    },
+    {
+      "name": "_distutils_hack"
+    },
+    {
+      "name": "_elementtree"
+    },
+    {
+      "name": "_frozen_importlib"
+    },
+    {
+      "name": "_frozen_importlib_external"
+    },
+    {
+      "name": "_hashlib"
+    },
+    {
+      "name": "_heapq"
+    },
+    {
+      "name": "_json"
+    },
+    {
+      "name": "_lsprof"
+    },
+    {
+      "name": "_lzma"
+    },
+    {
+      "name": "_multiprocessing"
+    },
+    {
+      "name": "_opcode"
+    },
+    {
+      "name": "_pickle"
+    },
+    {
+      "name": "_posixshmem"
+    },
+    {
+      "name": "_posixsubprocess"
+    },
+    {
+      "name": "_queue"
+    },
+    {
+      "name": "_random"
+    },
+    {
+      "name": "_sha512"
+    },
+    {
+      "name": "_sitebuiltins"
+    },
+    {
+      "name": "_socket"
+    },
+    {
+      "name": "_sqlite3"
+    },
+    {
+      "name": "_ssl"
+    },
+    {
+      "name": "_strptime"
+    },
+    {
+      "name": "_struct"
+    },
+    {
+      "name": "_sysconfigdata__linux_x86_64-linux-gnu"
+    },
+    {
+      "name": "_uuid"
+    },
+    {
+      "name": "_weakrefset"
+    },
+    {
+      "name": "_zoneinfo"
+    },
+    {
+      "name": "abc"
+    },
+    {
+      "name": "absl"
+    },
+    {
+      "name": "ale_py",
+      "version": "0.8.1"
+    },
+    {
+      "name": "argparse",
+      "version": "1.1"
+    },
+    {
+      "name": "array"
+    },
+    {
+      "name": "ast"
+    },
+    {
+      "name": "asttokens"
+    },
+    {
+      "name": "asyncio"
+    },
+    {
+      "name": "attr",
+      "version": "23.1.0"
+    },
+    {
+      "name": "base64"
+    },
+    {
+      "name": "bdb"
+    },
+    {
+      "name": "binascii"
+    },
+    {
+      "name": "bisect"
+    },
+    {
+      "name": "bz2"
+    },
+    {
+      "name": "cProfile"
+    },
+    {
+      "name": "calendar"
+    },
+    {
+      "name": "cffi",
+      "version": "1.15.1"
+    },
+    {
+      "name": "cloudpickle",
+      "version": "2.2.1"
+    },
+    {
+      "name": "cmath"
+    },
+    {
+      "name": "cmd"
+    },
+    {
+      "name": "code"
+    },
+    {
+      "name": "codecs"
+    },
+    {
+      "name": "codeop"
+    },
+    {
+      "name": "collections"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6"
+    },
+    {
+      "name": "colorsys"
+    },
+    {
+      "name": "comm",
+      "version": "0.1.3"
+    },
+    {
+      "name": "concurrent"
+    },
+    {
+      "name": "configparser"
+    },
+    {
+      "name": "contextlib"
+    },
+    {
+      "name": "contextvars"
+    },
+    {
+      "name": "copy"
+    },
+    {
+      "name": "copyreg"
+    },
+    {
+      "name": "csv",
+      "version": "1.0"
+    },
+    {
+      "name": "ctypes",
+      "version": "1.1.0"
+    },
+    {
+      "name": "cv2",
+      "version": "4.9.0"
+    },
+    {
+      "name": "cycler",
+      "version": "0.10.0"
+    },
+    {
+      "name": "dataclasses"
+    },
+    {
+      "name": "datetime"
+    },
+    {
+      "name": "dateutil",
+      "version": "2.8.2"
+    },
+    {
+      "name": "decimal",
+      "version": "1.70"
+    },
+    {
+      "name": "decorator",
+      "version": "5.1.1"
+    },
+    {
+      "name": "defusedxml",
+      "version": "0.7.1"
+    },
+    {
+      "name": "dgd"
+    },
+    {
+      "name": "difflib"
+    },
+    {
+      "name": "dis"
+    },
+    {
+      "name": "distutils",
+      "version": "3.9.16"
+    },
+    {
+      "name": "doctest"
+    },
+    {
+      "name": "email"
+    },
+    {
+      "name": "encodings"
+    },
+    {
+      "name": "enum"
+    },
+    {
+      "name": "exceptiongroup",
+      "version": "1.2.2"
+    },
+    {
+      "name": "executing",
+      "version": "1.2.0"
+    },
+    {
+      "name": "farama_notifications"
+    },
+    {
+      "name": "fcntl"
+    },
+    {
+      "name": "filecmp"
+    },
+    {
+      "name": "filelock",
+      "version": "3.9.0"
+    },
+    {
+      "name": "fnmatch"
+    },
+    {
+      "name": "fractions"
+    },
+    {
+      "name": "fsspec",
+      "version": "2023.4.0"
+    },
+    {
+      "name": "functools"
+    },
+    {
+      "name": "genericpath"
+    },
+    {
+      "name": "getopt"
+    },
+    {
+      "name": "getpass"
+    },
+    {
+      "name": "gettext"
+    },
+    {
+      "name": "glob"
+    },
+    {
+      "name": "google",
+      "version": "4.21.12"
+    },
+    {
+      "name": "grp"
+    },
+    {
+      "name": "gymnasium",
+      "version": "0.29.1"
+    },
+    {
+      "name": "gzip"
+    },
+    {
+      "name": "hashlib"
+    },
+    {
+      "name": "heapq"
+    },
+    {
+      "name": "hmac"
+    },
+    {
+      "name": "html"
+    },
+    {
+      "name": "http"
+    },
+    {
+      "name": "importlib"
+    },
+    {
+      "name": "importlib_metadata"
+    },
+    {
+      "name": "importlib_resources"
+    },
+    {
+      "name": "inspect"
+    },
+    {
+      "name": "io"
+    },
+    {
+      "name": "ipywidgets",
+      "version": "8.0.6"
+    },
+    {
+      "name": "jedi",
+      "version": "0.18.2"
+    },
+    {
+      "name": "json",
+      "version": "2.0.9"
+    },
+    {
+      "name": "keyword"
+    },
+    {
+      "name": "kiwisolver",
+      "version": "1.4.4"
+    },
+    {
+      "name": "linecache"
+    },
+    {
+      "name": "locale"
+    },
+    {
+      "name": "logging",
+      "version": "0.5.1.2"
+    },
+    {
+      "name": "lzma"
+    },
+    {
+      "name": "math"
+    },
+    {
+      "name": "matplotlib",
+      "version": "3.7.1"
+    },
+    {
+      "name": "mimetypes"
+    },
+    {
+      "name": "mmap"
+    },
+    {
+      "name": "mpl_toolkits"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.2.1"
+    },
+    {
+      "name": "multiprocessing"
+    },
+    {
+      "name": "networkx",
+      "version": "3.1"
+    },
+    {
+      "name": "ntpath"
+    },
+    {
+      "name": "numbers"
+    },
+    {
+      "name": "numexpr",
+      "version": "2.8.4"
+    },
+    {
+      "name": "numpy",
+      "version": "1.24.3"
+    },
+    {
+      "name": "nvfuser"
+    },
+    {
+      "name": "opcode"
+    },
+    {
+      "name": "operator"
+    },
+    {
+      "name": "os"
+    },
+    {
+      "name": "packaging",
+      "version": "23.1"
+    },
+    {
+      "name": "pandas",
+      "version": "2.0.1"
+    },
+    {
+      "name": "parso",
+      "version": "0.8.3"
+    },
+    {
+      "name": "pathlib"
+    },
+    {
+      "name": "pdb"
+    },
+    {
+      "name": "pexpect",
+      "version": "4.8.0"
+    },
+    {
+      "name": "pickle"
+    },
+    {
+      "name": "pickleshare",
+      "version": "0.7.5"
+    },
+    {
+      "name": "pickletools"
+    },
+    {
+      "name": "pkgutil"
+    },
+    {
+      "name": "platform",
+      "version": "1.0.8"
+    },
+    {
+      "name": "posixpath"
+    },
+    {
+      "name": "pprint"
+    },
+    {
+      "name": "profile"
+    },
+    {
+      "name": "prompt_toolkit",
+      "version": "3.0.48"
+    },
+    {
+      "name": "pstats"
+    },
+    {
+      "name": "psutil",
+      "version": "5.9.5"
+    },
+    {
+      "name": "pty"
+    },
+    {
+      "name": "ptyprocess",
+      "version": "0.7.0"
+    },
+    {
+      "name": "pure_eval",
+      "version": "0.2.2"
+    },
+    {
+      "name": "pyarrow",
+      "version": "11.0.0"
+    },
+    {
+      "name": "pydoc"
+    },
+    {
+      "name": "pydoc_data"
+    },
+    {
+      "name": "pydot",
+      "version": "2.0.0"
+    },
+    {
+      "name": "pyexpat"
+    },
+    {
+      "name": "pyg_lib",
+      "version": "0.2.0+pt20cu117"
+    },
+    {
+      "name": "pygments",
+      "version": "2.15.1"
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.0.9"
+    },
+    {
+      "name": "pytz",
+      "version": "2023.3"
+    },
+    {
+      "name": "queue"
+    },
+    {
+      "name": "quopri"
+    },
+    {
+      "name": "random"
+    },
+    {
+      "name": "re",
+      "version": "2.2.1"
+    },
+    {
+      "name": "reprlib"
+    },
+    {
+      "name": "resource"
+    },
+    {
+      "name": "rich"
+    },
+    {
+      "name": "runpy"
+    },
+    {
+      "name": "sb3_contrib",
+      "version": "2.3.0"
+    },
+    {
+      "name": "scipy",
+      "version": "1.9.1"
+    },
+    {
+      "name": "secrets"
+    },
+    {
+      "name": "select"
+    },
+    {
+      "name": "selectors"
+    },
+    {
+      "name": "setuptools",
+      "version": "3.9.16"
+    },
+    {
+      "name": "shimmy",
+      "version": "1.3.0"
+    },
+    {
+      "name": "shlex"
+    },
+    {
+      "name": "shutil"
+    },
+    {
+      "name": "signal"
+    },
+    {
+      "name": "site"
+    },
+    {
+      "name": "six",
+      "version": "1.16.0"
+    },
+    {
+      "name": "socket"
+    },
+    {
+      "name": "socketserver",
+      "version": "0.4"
+    },
+    {
+      "name": "sqlite3"
+    },
+    {
+      "name": "sre_compile"
+    },
+    {
+      "name": "sre_constants"
+    },
+    {
+      "name": "sre_parse"
+    },
+    {
+      "name": "ssl"
+    },
+    {
+      "name": "stable_baselines3",
+      "version": "2.3.2"
+    },
+    {
+      "name": "stack_data",
+      "version": "0.6.2"
+    },
+    {
+      "name": "stat"
+    },
+    {
+      "name": "string"
+    },
+    {
+      "name": "struct"
+    },
+    {
+      "name": "subprocess"
+    },
+    {
+      "name": "sympy",
+      "version": "1.11.1"
+    },
+    {
+      "name": "sysconfig"
+    },
+    {
+      "name": "tarfile"
+    },
+    {
+      "name": "tempfile"
+    },
+    {
+      "name": "tensorboard",
+      "version": "2.12.3"
+    },
+    {
+      "name": "termios"
+    },
+    {
+      "name": "textwrap"
+    },
+    {
+      "name": "threading"
+    },
+    {
+      "name": "timeit"
+    },
+    {
+      "name": "token"
+    },
+    {
+      "name": "tokenize"
+    },
+    {
+      "name": "torch",
+      "version": "2.0.0+cu117"
+    },
+    {
+      "name": "torch_cluster",
+      "version": "1.6.1+pt20cu117"
+    },
+    {
+      "name": "torch_geometric",
+      "version": "2.3.1"
+    },
+    {
+      "name": "torch_scatter",
+      "version": "2.1.1+pt20cu117"
+    },
+    {
+      "name": "torch_sparse",
+      "version": "0.6.17+pt20cu117"
+    },
+    {
+      "name": "torch_spline_conv",
+      "version": "1.2.2+pt20cu117"
+    },
+    {
+      "name": "tqdm",
+      "version": "4.65.0"
+    },
+    {
+      "name": "traceback"
+    },
+    {
+      "name": "traitlets",
+      "version": "5.9.0"
+    },
+    {
+      "name": "triton",
+      "version": "2.0.0"
+    },
+    {
+      "name": "tty"
+    },
+    {
+      "name": "types"
+    },
+    {
+      "name": "typing"
+    },
+    {
+      "name": "typing_extensions"
+    },
+    {
+      "name": "unicodedata"
+    },
+    {
+      "name": "unittest"
+    },
+    {
+      "name": "urllib"
+    },
+    {
+      "name": "uu"
+    },
+    {
+      "name": "uuid"
+    },
+    {
+      "name": "warnings"
+    },
+    {
+      "name": "wcwidth",
+      "version": "0.2.6"
+    },
+    {
+      "name": "weakref"
+    },
+    {
+      "name": "xml"
+    },
+    {
+      "name": "zipfile"
+    },
+    {
+      "name": "zipp"
+    },
+    {
+      "name": "zlib",
+      "version": "1.0"
+    },
+    {
+      "name": "zoneinfo"
+    },
+    {
+      "name": "zstandard",
+      "version": "0.19.0"
+    }
+  ],
+  "track1_runtime_seconds": 305.577,
+  "track1_runtime_hms": "0:05:06"
+}
