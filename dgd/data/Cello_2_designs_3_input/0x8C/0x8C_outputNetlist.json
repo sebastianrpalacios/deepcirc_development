@@ -1,0 +1,85 @@
+{
+	"name": "m0x8C",
+	"inputFilename": "/home/user/input/0x8C.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+		},
+		{
+			"name": "e2__$2_$1",
+			"src": "$2",
+			"dst": "$1",
+		},
+		{
+			"name": "e3__in2_$1",
+			"src": "in2",
+			"dst": "$1",
+		},
+		{
+			"name": "e4__$3_$2",
+			"src": "$3",
+			"dst": "$2",
+		},
+		{
+			"name": "e5__in1_$2",
+			"src": "in1",
+			"dst": "$2",
+		},
+		{
+			"name": "e6__in3_$3",
+			"src": "in3",
+			"dst": "$3",
+		},
+	],
+},

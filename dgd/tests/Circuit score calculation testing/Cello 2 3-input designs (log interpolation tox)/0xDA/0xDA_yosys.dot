@@ -1,0 +1,28 @@
+digraph "m0xDA" {
+label="m0xDA";
+rankdir="LR";
+remincross=true;
+n7 [ shape=octagon, label="in1", color="black", fontcolor="black" ];
+n8 [ shape=octagon, label="in2", color="black", fontcolor="black" ];
+n9 [ shape=octagon, label="in3", color="black", fontcolor="black" ];
+n10 [ shape=octagon, label="out", color="black", fontcolor="black" ];
+c13 [ shape=record, label="{{<p11> A}|$200\n$_NOT_|{<p12> Y}}" ];
+c14 [ shape=record, label="{{<p11> A}|$201\n$_NOT_|{<p12> Y}}" ];
+c16 [ shape=record, label="{{<p11> A|<p15> B}|$202\n$_NOR_|{<p12> Y}}" ];
+c17 [ shape=record, label="{{<p11> A|<p15> B}|$203\n$_NOR_|{<p12> Y}}" ];
+c18 [ shape=record, label="{{<p11> A|<p15> B}|$204\n$_NOR_|{<p12> Y}}" ];
+c19 [ shape=record, label="{{<p11> A|<p15> B}|$205\n$_NOR_|{<p12> Y}}" ];
+c20 [ shape=record, label="{{<p11> A}|$206\n$_NOT_|{<p12> Y}}" ];
+c19:p12:e -> c20:p11:w [color="black", label=""];
+c20:p12:e -> n10:w [color="black", label=""];
+c13:p12:e -> c16:p11:w [color="black", label=""];
+c14:p12:e -> c18:p11:w [color="black", label=""];
+c16:p12:e -> c17:p15:w [color="black", label=""];
+c17:p12:e -> c19:p11:w [color="black", label=""];
+c18:p12:e -> c19:p15:w [color="black", label=""];
+n7:e -> c16:p15:w [color="black", label=""];
+n7:e -> c18:p15:w [color="black", label=""];
+n8:e -> c13:p11:w [color="black", label=""];
+n9:e -> c14:p11:w [color="black", label=""];
+n9:e -> c17:p11:w [color="black", label=""];
+}

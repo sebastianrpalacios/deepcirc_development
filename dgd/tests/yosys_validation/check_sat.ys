@@ -1,0 +1,22 @@
+
+    read_verilog gold.v
+    prep -top gold
+    memory_map
+    opt -fast
+    design -stash gold
+
+    read_verilog gate.v
+    prep -top gate
+    memory_map
+    opt -fast
+    design -stash gate
+
+    design -copy-from gold -as gold gold
+    design -copy-from gate -as gate gate
+
+    miter -equiv -flatten gold gate miter
+    prep -top miter
+    memory_map
+    opt -fast
+    sat -verify -prove trigger 0 -show-ports -show-inputs -set-def-inputs -enable_undef -set-init-undef
+    

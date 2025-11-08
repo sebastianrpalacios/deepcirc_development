@@ -1,0 +1,175 @@
+{
+	"name": "m0x88",
+	"inputFilename": "/home/user/input/0x88.v",
+	"placements": 
+	[
+		[
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group1_Object0",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pPhlF",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object1",
+						"node": "$1",
+						"direction": 1,
+						"parts": 
+						[
+							"pTac",
+							"pTet",
+							"P2_PhlF_cassette",
+						],
+					},
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+		],
+		[
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group1_Object0",
+						"node": "$1",
+						"direction": 1,
+						"parts": 
+						[
+							"pTac",
+							"pTet",
+							"P2_PhlF_cassette",
+						],
+					},
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group2_Object0",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pPhlF",
+							"YFP_cassette",
+						],
+					},
+				],
+			},
+		],
+		[
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group1_Object0",
+						"node": "$1",
+						"direction": 1,
+						"parts": 
+						[
+							"pTac",
+							"pTet",
+							"P2_PhlF_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object1",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pPhlF",
+							"YFP_cassette",
+						],
+					},
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+		],
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "P2_PhlF",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "YFP_reporter",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "LacI_sensor",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "TetR_sensor",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+		},
+		{
+			"name": "e2__in3_$1",
+			"src": "in3",
+			"dst": "$1",
+		},
+		{
+			"name": "e3__in2_$1",
+			"src": "in2",
+			"dst": "$1",
+		},
+	],
+},

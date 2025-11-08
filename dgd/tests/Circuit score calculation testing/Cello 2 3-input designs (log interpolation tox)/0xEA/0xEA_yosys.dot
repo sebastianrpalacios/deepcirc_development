@@ -1,0 +1,20 @@
+digraph "m0xEA" {
+label="m0xEA";
+rankdir="LR";
+remincross=true;
+n4 [ shape=octagon, label="in1", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="in2", color="black", fontcolor="black" ];
+n6 [ shape=octagon, label="in3", color="black", fontcolor="black" ];
+n7 [ shape=octagon, label="out", color="black", fontcolor="black" ];
+c10 [ shape=record, label="{{<p8> A}|$200\n$_NOT_|{<p9> Y}}" ];
+c12 [ shape=record, label="{{<p8> A|<p11> B}|$201\n$_NOR_|{<p9> Y}}" ];
+c13 [ shape=record, label="{{<p8> A|<p11> B}|$202\n$_NOR_|{<p9> Y}}" ];
+c14 [ shape=record, label="{{<p8> A}|$203\n$_NOT_|{<p9> Y}}" ];
+c10:p9:e -> c13:p8:w [color="black", label=""];
+c12:p9:e -> c13:p11:w [color="black", label=""];
+c13:p9:e -> c14:p8:w [color="black", label=""];
+n4:e -> c12:p11:w [color="black", label=""];
+n5:e -> c12:p8:w [color="black", label=""];
+n6:e -> c10:p8:w [color="black", label=""];
+c14:p9:e -> n7:w [color="black", label=""];
+}

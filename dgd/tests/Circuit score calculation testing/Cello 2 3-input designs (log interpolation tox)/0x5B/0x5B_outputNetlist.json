@@ -1,0 +1,139 @@
+{
+	"name": "m0x5B",
+	"inputFilename": "/content/input/0x5B.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$4",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$5",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+			"idx": -1,
+		},
+		{
+			"name": "e2__$2_out",
+			"src": "$2",
+			"dst": "out",
+			"idx": -1,
+		},
+		{
+			"name": "e3__in3_$1",
+			"src": "in3",
+			"dst": "$1",
+			"idx": -1,
+		},
+		{
+			"name": "e4__$3_$1",
+			"src": "$3",
+			"dst": "$1",
+			"idx": -1,
+		},
+		{
+			"name": "e5__$3_$2",
+			"src": "$3",
+			"dst": "$2",
+			"idx": -1,
+		},
+		{
+			"name": "e6__$4_$2",
+			"src": "$4",
+			"dst": "$2",
+			"idx": -1,
+		},
+		{
+			"name": "e7__in3_$3",
+			"src": "in3",
+			"dst": "$3",
+			"idx": -1,
+		},
+		{
+			"name": "e8__in1_$3",
+			"src": "in1",
+			"dst": "$3",
+			"idx": -1,
+		},
+		{
+			"name": "e9__in2_$4",
+			"src": "in2",
+			"dst": "$4",
+			"idx": -1,
+		},
+		{
+			"name": "e10__$5_$4",
+			"src": "$5",
+			"dst": "$4",
+			"idx": -1,
+		},
+		{
+			"name": "e11__in1_$5",
+			"src": "in1",
+			"dst": "$5",
+			"idx": -1,
+		},
+		{
+			"name": "e12__in2_$5",
+			"src": "in2",
+			"dst": "$5",
+			"idx": -1,
+		},
+	],
+},

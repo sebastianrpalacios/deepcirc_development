@@ -1,0 +1,155 @@
+{
+	"name": "m0xE677",
+	"inputFilename": "/home/user/input/0xE677_V2.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "S2_SrpR",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "YFP_reporter",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "P1_PhlF",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "R1_PsrA",
+		},
+		{
+			"name": "$4",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "B2_BM3R1",
+		},
+		{
+			"name": "$5",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "F1_AmeR",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "LacI_sensor",
+		},
+		{
+			"name": "$6",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "Q2_QacR",
+		},
+		{
+			"name": "in4",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "BetI_sensor",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "AraC_sensor",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "TetR_sensor",
+		},
+		{
+			"name": "$7",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "A1_AmtR",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+		},
+		{
+			"name": "e2__$2_out",
+			"src": "$2",
+			"dst": "out",
+		},
+		{
+			"name": "e3__$3_$1",
+			"src": "$3",
+			"dst": "$1",
+		},
+		{
+			"name": "e4__$4_$1",
+			"src": "$4",
+			"dst": "$1",
+		},
+		{
+			"name": "e5__$5_$2",
+			"src": "$5",
+			"dst": "$2",
+		},
+		{
+			"name": "e6__in3_$2",
+			"src": "in3",
+			"dst": "$2",
+		},
+		{
+			"name": "e7__$6_$5",
+			"src": "$6",
+			"dst": "$5",
+		},
+		{
+			"name": "e8__in4_$5",
+			"src": "in4",
+			"dst": "$5",
+		},
+		{
+			"name": "e9__in1_$6",
+			"src": "in1",
+			"dst": "$6",
+		},
+		{
+			"name": "e10__in2_$6",
+			"src": "in2",
+			"dst": "$6",
+		},
+		{
+			"name": "e11__in1_$3",
+			"src": "in1",
+			"dst": "$3",
+		},
+		{
+			"name": "e12__$7_$3",
+			"src": "$7",
+			"dst": "$3",
+		},
+		{
+			"name": "e13__in3_$4",
+			"src": "in3",
+			"dst": "$4",
+		},
+		{
+			"name": "e14__in4_$7",
+			"src": "in4",
+			"dst": "$7",
+		},
+	],
+},

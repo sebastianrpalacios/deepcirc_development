@@ -1,0 +1,23 @@
+digraph m0xDD {
+label="m0xDD"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in3";"in2";}
+{rank = same; "out";}
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT
+LacI_sensor"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT
+YFP_reporter"]
+"$1" [shape=box, label="$1
+NOT
+P2_PhlF"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT
+TetR_sensor"]
+"in3" -> "out"
+"$1" -> "out"
+"in2" -> "$1"
+}

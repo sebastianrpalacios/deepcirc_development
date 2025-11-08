@@ -1,0 +1,31 @@
+digraph m0x51 {
+label="m0x51"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in2";"in3";"in1";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT"]
+"$2" [shape=box, label="$2
+NOT"]
+"$3" [shape=box, label="$3
+NOR"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT"]
+"$4" [shape=box, label="$4
+NOT"]
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT"]
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT"]
+"$1" -> "out"
+"$2" -> "$1"
+"$3" -> "$1"
+"in2" -> "$3"
+"$4" -> "$3"
+"in3" -> "$2"
+"in1" -> "$4"
+}

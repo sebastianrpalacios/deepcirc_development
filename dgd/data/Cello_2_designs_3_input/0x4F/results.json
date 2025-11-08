@@ -1,0 +1,56 @@
+[ {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x4F_logicSynthesis.dot",
+  "stage" : "logicSynthesis"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x4F_logicSynthesis.pdf",
+  "stage" : "logicSynthesis"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x4F_logicSynthesis.png",
+  "stage" : "logicSynthesis"
+}, {
+  "name" : "logic",
+  "description" : "The truth table for the circuit.",
+  "file" : "0x4F_logic.csv",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "toxicity",
+  "description" : "The toxicity for the circuit.",
+  "file" : "0x4F_toxicity.csv",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "activity",
+  "description" : "The activity for the circuit.",
+  "file" : "0x4F_activity.csv",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $1.",
+  "file" : "response_plot_$1_Q2_QacR.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $2.",
+  "file" : "response_plot_$2_P2_PhlF.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x4F_technologyMapping.dot",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x4F_technologyMapping.pdf",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x4F_technologyMapping.png",
+  "stage" : "technologyMapping"
+} ]

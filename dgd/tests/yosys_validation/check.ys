@@ -1,0 +1,22 @@
+
+    read_verilog gold.v
+    prep -top gold
+    memory_map                # <--- turn any ROMs into mux/logic
+    opt -fast
+    design -stash gold
+
+    read_verilog gate.v
+    prep -top gate
+    memory_map
+    opt -fast
+    design -stash gate
+
+    design -copy-from gold -as gold gold
+    design -copy-from gate -as gate gate
+
+    equiv_make gold gate equiv
+    prep -top equiv
+    opt -fast
+    equiv_simple -undef
+    equiv_status -assert
+    

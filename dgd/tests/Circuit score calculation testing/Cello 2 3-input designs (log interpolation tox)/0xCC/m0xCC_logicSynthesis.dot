@@ -1,0 +1,16 @@
+digraph m0xCC {
+label="m0xCC"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in2";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOT"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT"]
+"$1" -> "out"
+"in2" -> "$1"
+}

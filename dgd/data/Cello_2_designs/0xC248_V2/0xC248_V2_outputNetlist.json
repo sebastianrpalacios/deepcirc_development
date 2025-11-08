@@ -1,0 +1,220 @@
+{
+	"name": "m0xC248",
+	"inputFilename": "/home/user/input/0xC248_V2.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$4",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$5",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$6",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$7",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$8",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$9",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$10",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$11",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in4",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$12",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+		},
+		{
+			"name": "e2__$2_$1",
+			"src": "$2",
+			"dst": "$1",
+		},
+		{
+			"name": "e3__$3_$1",
+			"src": "$3",
+			"dst": "$1",
+		},
+		{
+			"name": "e4__$4_$3",
+			"src": "$4",
+			"dst": "$3",
+		},
+		{
+			"name": "e5__$5_$3",
+			"src": "$5",
+			"dst": "$3",
+		},
+		{
+			"name": "e6__$6_$2",
+			"src": "$6",
+			"dst": "$2",
+		},
+		{
+			"name": "e7__$7_$2",
+			"src": "$7",
+			"dst": "$2",
+		},
+		{
+			"name": "e8__$5_$7",
+			"src": "$5",
+			"dst": "$7",
+		},
+		{
+			"name": "e9__$8_$6",
+			"src": "$8",
+			"dst": "$6",
+		},
+		{
+			"name": "e10__$9_$6",
+			"src": "$9",
+			"dst": "$6",
+		},
+		{
+			"name": "e11__$10_$9",
+			"src": "$10",
+			"dst": "$9",
+		},
+		{
+			"name": "e12__$11_$9",
+			"src": "$11",
+			"dst": "$9",
+		},
+		{
+			"name": "e13__in2_$8",
+			"src": "in2",
+			"dst": "$8",
+		},
+		{
+			"name": "e14__in1_$11",
+			"src": "in1",
+			"dst": "$11",
+		},
+		{
+			"name": "e15__in3_$10",
+			"src": "in3",
+			"dst": "$10",
+		},
+		{
+			"name": "e16__in4_$5",
+			"src": "in4",
+			"dst": "$5",
+		},
+		{
+			"name": "e17__$12_$5",
+			"src": "$12",
+			"dst": "$5",
+		},
+		{
+			"name": "e18__in3_$12",
+			"src": "in3",
+			"dst": "$12",
+		},
+		{
+			"name": "e19__in1_$12",
+			"src": "in1",
+			"dst": "$12",
+		},
+		{
+			"name": "e20__in3_$4",
+			"src": "in3",
+			"dst": "$4",
+		},
+		{
+			"name": "e21__in2_$4",
+			"src": "in2",
+			"dst": "$4",
+		},
+	],
+},

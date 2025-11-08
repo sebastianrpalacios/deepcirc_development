@@ -1,0 +1,4 @@
+design_name,parts,
+m0xF00,pBAD,RiboJ53,P2,PhlF,ECK120033737,pPhlF,YFP_cassette,_NONCE_PAD
+m0xF01,pBAD,RiboJ53,P2,PhlF,ECK120033737,_NONCE_PAD,pPhlF,YFP_cassette
+m0xF02,pPhlF,YFP_cassette,pBAD,RiboJ53,P2,PhlF,ECK120033737,_NONCE_PAD

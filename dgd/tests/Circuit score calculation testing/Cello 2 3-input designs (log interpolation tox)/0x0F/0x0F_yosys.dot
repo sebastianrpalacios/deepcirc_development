@@ -1,0 +1,12 @@
+digraph "m0x0F" {
+label="m0x0F";
+rankdir="LR";
+remincross=true;
+n1 [ shape=octagon, label="in1", color="black", fontcolor="black" ];
+n2 [ shape=octagon, label="in2", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="in3", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="out", color="black", fontcolor="black" ];
+x0 [shape=box, style=rounded, label="BUF"];
+n1:e -> x0:w:w [color="black", label=""];
+x0:e:e -> n4:w [color="black", label=""];
+}

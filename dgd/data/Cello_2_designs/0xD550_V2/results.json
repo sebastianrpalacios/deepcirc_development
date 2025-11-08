@@ -1,0 +1,81 @@
+[ {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0xD550_logicSynthesis.dot",
+  "stage" : "logicSynthesis"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0xD550_logicSynthesis.pdf",
+  "stage" : "logicSynthesis"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0xD550_logicSynthesis.png",
+  "stage" : "logicSynthesis"
+}, {
+  "name" : "logic",
+  "description" : "The truth table for the circuit.",
+  "file" : "0xD550_V2_logic.csv",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "toxicity",
+  "description" : "The toxicity for the circuit.",
+  "file" : "0xD550_V2_toxicity.csv",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "activity",
+  "description" : "The activity for the circuit.",
+  "file" : "0xD550_V2_activity.csv",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $1.",
+  "file" : "response_plot_$1_L1_LitR.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $2.",
+  "file" : "response_plot_$2_A1_AmtR.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $3.",
+  "file" : "response_plot_$3_B3_BM3R1.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $4.",
+  "file" : "response_plot_$4_S4_SrpR.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $5.",
+  "file" : "response_plot_$5_F1_AmeR.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $6.",
+  "file" : "response_plot_$6_N1_LmrA.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "response_plot",
+  "description" : "The response plot for node $7.",
+  "file" : "response_plot_$7_Q2_QacR.png",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0xD550_technologyMapping.dot",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0xD550_technologyMapping.pdf",
+  "stage" : "technologyMapping"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0xD550_technologyMapping.png",
+  "stage" : "technologyMapping"
+} ]

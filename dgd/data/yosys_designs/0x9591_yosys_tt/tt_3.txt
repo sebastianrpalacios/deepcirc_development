@@ -1,0 +1,28 @@
+
+8. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up SAT problem:
+Import set-constraint: \_0 = 1'0
+Import set-constraint: \_1 = 1'0
+Import set-constraint: \_2 = 1'1
+Import set-constraint: \_3 = 1'1
+Final constraint equation: { \_3 \_2 \_1 \_0 } = 4'1100
+Imported 13 cells to SAT database.
+Import show expression: \_958
+Import show expression: \_0
+Import show expression: \_1
+Import show expression: \_2
+Import show expression: \_3
+Import show expression: \_958
+
+Solving problem with 72 variables and 178 clauses..
+SAT solving finished - model found:
+
+  Signal Name             Dec       Hex           Bin
+  --------------- ----------- --------- -------------
+  \_0                       0         0             0
+  \_1                       0         0             0
+  \_2                       1         1             1
+  \_3                       1         1             1
+  \_958                     1         1             1
+Dumping SAT model to WaveJSON file 'tt_3.json'.

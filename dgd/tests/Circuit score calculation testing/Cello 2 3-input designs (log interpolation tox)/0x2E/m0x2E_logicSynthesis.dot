@@ -1,0 +1,34 @@
+digraph m0x2E {
+label="m0x2E"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in3";"in2";"in1";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT"]
+"$2" [shape=box, label="$2
+NOR"]
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT"]
+"$3" [shape=box, label="$3
+NOR"]
+"$3Point" [ shape=point ]
+"$3" -> "$3Point":w
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT"]
+"in2Point" [ shape=point ]
+"in2" -> "in2Point":w
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT"]
+"$1" -> "out"
+"$2" -> "out"
+"in3" -> "$1"
+"$3Point":e -> "$1"
+"in2Point":e -> "$2"
+"$3Point":e -> "$2"
+"in1" -> "$3"
+"in2Point":e -> "$3"
+}

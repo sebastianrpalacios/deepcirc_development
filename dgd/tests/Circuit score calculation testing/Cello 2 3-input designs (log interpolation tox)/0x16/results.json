@@ -1,0 +1,16 @@
+[ {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x16_logicSynthesis.dot",
+  "stage" : "logicSynthesis"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x16_logicSynthesis.pdf",
+  "stage" : "logicSynthesis"
+}, {
+  "name" : "netlist",
+  "description" : "The netlist.",
+  "file" : "m0x16_logicSynthesis.png",
+  "stage" : "logicSynthesis"
+} ]

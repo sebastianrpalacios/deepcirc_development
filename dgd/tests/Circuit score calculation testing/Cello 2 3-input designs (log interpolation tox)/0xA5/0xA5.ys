@@ -1,0 +1,14 @@
+read_verilog /content/input/0xA5.v
+flatten
+splitnets -ports
+hierarchy -auto-top
+proc
+techmap
+opt
+abc -g NOR
+opt
+hierarchy -auto-top
+opt_clean -purge
+show -format pdf -prefix /content/output/0xA5/0xA5_yosys
+write_edif /content/output/0xA5/0xA5.edif
+write_json /content/output/0xA5/0xA5.json

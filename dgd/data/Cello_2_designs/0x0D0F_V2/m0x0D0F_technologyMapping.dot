@@ -1,0 +1,46 @@
+digraph m0x0D0F {
+label="m0x0D0F"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in3";"in2";"in4";"in1";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR
+Q1_QacR"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT
+YFP_reporter"]
+"$2" [shape=box, label="$2
+NOR
+S4_SrpR"]
+"$3" [shape=box, label="$3
+NOT
+R1_PsrA"]
+"$3Point" [ shape=point ]
+"$3" -> "$3Point":w
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT
+LacI_sensor"]
+"$4" [shape=box, label="$4
+NOR
+P2_PhlF"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT
+TetR_sensor"]
+"in4" [shape=octagon, label="in4
+PRIMARY_INPUT
+BetI_sensor"]
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT
+AraC_sensor"]
+"$1" -> "out"
+"$2" -> "out"
+"$3Point":e -> "$1"
+"in3" -> "$1"
+"$3Point":e -> "$2"
+"$4" -> "$2"
+"in2" -> "$3"
+"in4" -> "$4"
+"in1" -> "$4"
+}

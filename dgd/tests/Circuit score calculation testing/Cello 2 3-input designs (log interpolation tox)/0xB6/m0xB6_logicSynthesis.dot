@@ -1,0 +1,58 @@
+digraph m0xB6 {
+label="m0xB6"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in1";"in3";"in2";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT"]
+"$2" [shape=box, label="$2
+NOR"]
+"$3" [shape=box, label="$3
+NOR"]
+"$3Point" [ shape=point ]
+"$3" -> "$3Point":w
+"$4" [shape=box, label="$4
+NOR"]
+"$5" [shape=box, label="$5
+NOT"]
+"$5Point" [ shape=point ]
+"$5" -> "$5Point":w
+"$6" [shape=box, label="$6
+NOR"]
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT"]
+"in1Point" [ shape=point ]
+"in1" -> "in1Point":w
+"$7" [shape=box, label="$7
+NOR"]
+"$7Point" [ shape=point ]
+"$7" -> "$7Point":w
+"$8" [shape=box, label="$8
+NOT"]
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT"]
+"in2Point" [ shape=point ]
+"in2" -> "in2Point":w
+"$1" -> "out"
+"$2" -> "out"
+"$3Point":e -> "$1"
+"$4" -> "$1"
+"$5Point":e -> "$4"
+"$6" -> "$4"
+"in1Point":e -> "$6"
+"$7Point":e -> "$6"
+"$5Point":e -> "$2"
+"$8" -> "$2"
+"in3" -> "$5"
+"$3Point":e -> "$8"
+"in2Point":e -> "$3"
+"$7Point":e -> "$3"
+"in1Point":e -> "$7"
+"in2Point":e -> "$7"
+}

@@ -1,0 +1,28 @@
+digraph m0xC4 {
+label="m0xC4"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in2";"in3";"in1";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT"]
+"$2" [shape=box, label="$2
+NOR"]
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT"]
+"$3" [shape=box, label="$3
+NOT"]
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT"]
+"$1" -> "out"
+"in2" -> "$1"
+"$2" -> "$1"
+"in3" -> "$2"
+"$3" -> "$2"
+"in1" -> "$3"
+}

@@ -1,0 +1,14 @@
+read_verilog /content/input/0x95.v
+flatten
+splitnets -ports
+hierarchy -auto-top
+proc
+techmap
+opt
+abc -g NOR
+opt
+hierarchy -auto-top
+opt_clean -purge
+show -format pdf -prefix /content/output/0x95/0x95_yosys
+write_edif /content/output/0x95/0x95.edif
+write_json /content/output/0x95/0x95.json

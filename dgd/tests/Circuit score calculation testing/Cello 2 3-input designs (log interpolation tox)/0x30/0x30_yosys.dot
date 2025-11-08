@@ -1,0 +1,15 @@
+digraph "m0x30" {
+label="m0x30";
+rankdir="LR";
+remincross=true;
+n2 [ shape=octagon, label="in1", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="in2", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="in3", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="out", color="black", fontcolor="black" ];
+c8 [ shape=record, label="{{<p6> A}|$200\n$_NOT_|{<p7> Y}}" ];
+c10 [ shape=record, label="{{<p6> A|<p9> B}|$201\n$_NOR_|{<p7> Y}}" ];
+c8:p7:e -> c10:p6:w [color="black", label=""];
+n2:e -> c10:p9:w [color="black", label=""];
+n3:e -> c8:p6:w [color="black", label=""];
+c10:p7:e -> n5:w [color="black", label=""];
+}

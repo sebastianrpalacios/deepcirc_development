@@ -1,0 +1,7 @@
+# Benchmark "blif_file" written by ABC on Thu Aug 28 19:30:14 2025
+INPUT(in2)
+INPUT(in1)
+INPUT(in3)
+OUTPUT(out)
+n4          = vdd
+out         = NOT(n4)

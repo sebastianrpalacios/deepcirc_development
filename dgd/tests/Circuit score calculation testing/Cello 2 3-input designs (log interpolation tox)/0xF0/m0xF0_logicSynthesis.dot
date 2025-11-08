@@ -1,0 +1,16 @@
+digraph m0xF0 {
+label="m0xF0"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in1";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOT"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT"]
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT"]
+"$1" -> "out"
+"in1" -> "$1"
+}

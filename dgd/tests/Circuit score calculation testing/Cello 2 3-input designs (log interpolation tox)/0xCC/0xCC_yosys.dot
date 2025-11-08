@@ -1,0 +1,12 @@
+digraph "m0xCC" {
+label="m0xCC";
+rankdir="LR";
+remincross=true;
+n1 [ shape=octagon, label="in1", color="black", fontcolor="black" ];
+n2 [ shape=octagon, label="in2", color="black", fontcolor="black" ];
+n3 [ shape=octagon, label="in3", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="out", color="black", fontcolor="black" ];
+c7 [ shape=record, label="{{<p5> A}|$200\n$_NOT_|{<p6> Y}}" ];
+n2:e -> c7:p5:w [color="black", label=""];
+c7:p6:e -> n4:w [color="black", label=""];
+}

@@ -1,0 +1,6 @@
+design_name,parts,
+m0xEA0,pPhlF,YFP_cassette,pQacR,YFP_cassette,pBAD,pTet,RiboJ53,P2,PhlF,ECK120033737,pTac,RiboJ60,Q1,QacR,ECK120010818,_NONCE_PAD
+m0xEA1,pPhlF,YFP_cassette,pBAD,pTet,RiboJ53,P2,PhlF,ECK120033737,pTac,RiboJ60,Q1,QacR,ECK120010818,pQacR,YFP_cassette,_NONCE_PAD
+m0xEA2,pBAD,pTet,RiboJ53,P2,PhlF,ECK120033737,pPhlF,YFP_cassette,pTac,RiboJ60,Q1,QacR,ECK120010818,pQacR,YFP_cassette,_NONCE_PAD
+m0xEA3,pPhlF,YFP_cassette,pBAD,pTet,RiboJ53,P2,PhlF,ECK120033737,pQacR,YFP_cassette,pTac,RiboJ60,Q1,QacR,ECK120010818,_NONCE_PAD
+m0xEA4,pPhlF,YFP_cassette,pBAD,pTet,RiboJ53,P2,PhlF,ECK120033737,pTac,RiboJ60,Q1,QacR,ECK120010818,_NONCE_PAD,pQacR,YFP_cassette

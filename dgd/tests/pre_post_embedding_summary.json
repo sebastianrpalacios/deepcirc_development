@@ -1,0 +1,10 @@
+{
+  "pre": {
+    "train_probe_acc": 0.2649,
+    "test_probe_acc": 0.203
+  },
+  "post": {
+    "train_probe_acc": 0.3131,
+    "test_probe_acc": 0.3317
+  }
+}

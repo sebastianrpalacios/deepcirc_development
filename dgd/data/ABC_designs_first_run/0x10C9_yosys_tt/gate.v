@@ -1,0 +1,24 @@
+module gate(_0, _1, _2, _3, _4);
+input _0, _1, _2, _3;
+output _4;
+wire _10, _11, _12, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _5, _6, _7, _8, _9;
+assign _16 = ~_0;
+assign _23 = ~_0;
+assign _15 = ~_1;
+assign _21 = ~_1;
+assign _17 = ~_2;
+assign _18 = ~_3;
+assign _22 = ~_3;
+assign _6 = ~(_1 | _16);
+assign _11 = ~(_2 | _23);
+assign _5 = ~(_0 | _15);
+assign _7 = ~(_17 | _18);
+assign _10 = ~(_21 | _22);
+assign _24 = ~_11;
+assign _19 = ~_7;
+assign _12 = ~(_10 | _24);
+assign _8 = ~(_5 | _19);
+assign _20 = ~_8;
+assign _9 = ~(_6 | _20);
+assign _4 = _9 | _12;
+endmodule

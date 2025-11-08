@@ -1,0 +1,5 @@
+from_partname,type,to_partname,arrowhead_length,linestyle,linewidth,color
+PsrA,Repression,pPsrA,3,-,,0.76;0.29;0.61
+QacR,Repression,pQacR,3,-,,0.40;0.74;0.27
+PhlF,Repression,pPhlF,3,-,,0.98;0.64;0.15
+SrpR,Repression,pSrpR,3,-,,0.00;0.41;0.22

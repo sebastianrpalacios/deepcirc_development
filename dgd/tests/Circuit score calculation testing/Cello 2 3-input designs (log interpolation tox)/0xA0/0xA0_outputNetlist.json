@@ -1,0 +1,55 @@
+{
+	"name": "m0xA0",
+	"inputFilename": "/content/input/0xA0.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+			"idx": -1,
+		},
+		{
+			"name": "e2__in3_$1",
+			"src": "in3",
+			"dst": "$1",
+			"idx": -1,
+		},
+		{
+			"name": "e3__in1_$1",
+			"src": "in1",
+			"dst": "$1",
+			"idx": -1,
+		},
+	],
+},

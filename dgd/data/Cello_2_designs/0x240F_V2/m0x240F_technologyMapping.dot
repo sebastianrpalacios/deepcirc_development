@@ -1,0 +1,83 @@
+digraph m0x240F {
+label="m0x240F"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in4";"in1";"in2";"in3";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR
+I1_IcaRA"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT
+YFP_reporter"]
+"$2" [shape=box, label="$2
+NOR
+L1_LitR"]
+"$3" [shape=box, label="$3
+NOT
+P3_PhlF"]
+"$4" [shape=box, label="$4
+NOT
+H1_HlyIIR"]
+"$5" [shape=box, label="$5
+NOR
+F1_AmeR"]
+"$6" [shape=box, label="$6
+NOR
+B2_BM3R1"]
+"in4" [shape=octagon, label="in4
+PRIMARY_INPUT
+BetI_sensor"]
+"in4Point" [ shape=point ]
+"in4" -> "in4Point":w
+"$7" [shape=box, label="$7
+NOT
+Q2_QacR"]
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT
+AraC_sensor"]
+"in1Point" [ shape=point ]
+"in1" -> "in1Point":w
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT
+TetR_sensor"]
+"in2Point" [ shape=point ]
+"in2" -> "in2Point":w
+"$8" [shape=box, label="$8
+NOR
+S2_SrpR"]
+"$9" [shape=box, label="$9
+NOT
+R1_PsrA"]
+"$10" [shape=box, label="$10
+NOR
+A1_AmtR"]
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT
+LacI_sensor"]
+"in3Point" [ shape=point ]
+"in3" -> "in3Point":w
+"$11" [shape=box, label="$11
+NOT
+N1_LmrA"]
+"$1" -> "out"
+"$2" -> "out"
+"$3" -> "$1"
+"$4" -> "$1"
+"$5" -> "$3"
+"$6" -> "$4"
+"in4Point":e -> "$5"
+"$7" -> "$5"
+"in1Point":e -> "$6"
+"in2Point":e -> "$6"
+"$8" -> "$2"
+"$9" -> "$2"
+"$10" -> "$8"
+"in1Point":e -> "$8"
+"in3Point":e -> "$10"
+"$11" -> "$10"
+"in3Point":e -> "$7"
+"in4Point":e -> "$11"
+"in2Point":e -> "$9"
+}

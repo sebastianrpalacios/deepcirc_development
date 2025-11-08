@@ -1,0 +1,16 @@
+module m0x6060 (input in2, in1, in4, in3, output out);
+
+	wire \$n10_0;
+	wire \$n6_0;
+	wire \$n9_0;
+	wire \$n8_0;
+	wire \$n7_0;
+
+	not (\$n7_0, in3);
+	not (\$n6_0, in4);
+	nor (\$n8_0, \$n6_0, in3);
+	nor (\$n9_0, \$n7_0, in4);
+	nor (\$n10_0, \$n9_0, \$n8_0);
+	nor (out, \$n10_0, in2);
+
+endmodule

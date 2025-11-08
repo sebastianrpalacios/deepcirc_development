@@ -1,0 +1,122 @@
+{
+	"name": "m0x6060",
+	"inputFilename": "/home/user/input/0x6060_V2.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "P1_PhlF",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "YFP_reporter",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "A1_AmtR",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "TetR_sensor",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "B3_BM3R1",
+		},
+		{
+			"name": "$4",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "L1_LitR",
+		},
+		{
+			"name": "$5",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "R1_PsrA",
+		},
+		{
+			"name": "in4",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "BetI_sensor",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "LacI_sensor",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+		},
+		{
+			"name": "e2__$2_$1",
+			"src": "$2",
+			"dst": "$1",
+		},
+		{
+			"name": "e3__in2_$1",
+			"src": "in2",
+			"dst": "$1",
+		},
+		{
+			"name": "e4__$3_$2",
+			"src": "$3",
+			"dst": "$2",
+		},
+		{
+			"name": "e5__$4_$2",
+			"src": "$4",
+			"dst": "$2",
+		},
+		{
+			"name": "e6__$5_$3",
+			"src": "$5",
+			"dst": "$3",
+		},
+		{
+			"name": "e7__in4_$3",
+			"src": "in4",
+			"dst": "$3",
+		},
+		{
+			"name": "e8__$5_$4",
+			"src": "$5",
+			"dst": "$4",
+		},
+		{
+			"name": "e9__in3_$4",
+			"src": "in3",
+			"dst": "$4",
+		},
+		{
+			"name": "e10__in3_$5",
+			"src": "in3",
+			"dst": "$5",
+		},
+		{
+			"name": "e11__in4_$5",
+			"src": "in4",
+			"dst": "$5",
+		},
+	],
+},

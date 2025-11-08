@@ -1,0 +1,165 @@
+{
+	"name": "m0x61",
+	"inputFilename": "/home/user/input/0x61.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "P1_PhlF",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "YFP_reporter",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "S4_SrpR",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "R1_PsrA",
+		},
+		{
+			"name": "$4",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "A1_AmtR",
+		},
+		{
+			"name": "$5",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "Q2_QacR",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "AraC_sensor",
+		},
+		{
+			"name": "$6",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "E1_BetI",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "LacI_sensor",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "TetR_sensor",
+		},
+		{
+			"name": "$7",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "L1_LitR",
+		},
+		{
+			"name": "$8",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "B3_BM3R1",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+		},
+		{
+			"name": "e2__$2_out",
+			"src": "$2",
+			"dst": "out",
+		},
+		{
+			"name": "e3__$3_$1",
+			"src": "$3",
+			"dst": "$1",
+		},
+		{
+			"name": "e4__$4_$1",
+			"src": "$4",
+			"dst": "$1",
+		},
+		{
+			"name": "e5__$5_$2",
+			"src": "$5",
+			"dst": "$2",
+		},
+		{
+			"name": "e6__$4_$2",
+			"src": "$4",
+			"dst": "$2",
+		},
+		{
+			"name": "e7__$3_$4",
+			"src": "$3",
+			"dst": "$4",
+		},
+		{
+			"name": "e8__$5_$4",
+			"src": "$5",
+			"dst": "$4",
+		},
+		{
+			"name": "e9__in1_$3",
+			"src": "in1",
+			"dst": "$3",
+		},
+		{
+			"name": "e10__$6_$3",
+			"src": "$6",
+			"dst": "$3",
+		},
+		{
+			"name": "e11__in3_$6",
+			"src": "in3",
+			"dst": "$6",
+		},
+		{
+			"name": "e12__in2_$6",
+			"src": "in2",
+			"dst": "$6",
+		},
+		{
+			"name": "e13__$7_$5",
+			"src": "$7",
+			"dst": "$5",
+		},
+		{
+			"name": "e14__$8_$5",
+			"src": "$8",
+			"dst": "$5",
+		},
+		{
+			"name": "e15__in3_$7",
+			"src": "in3",
+			"dst": "$7",
+		},
+		{
+			"name": "e16__in2_$8",
+			"src": "in2",
+			"dst": "$8",
+		},
+	],
+},

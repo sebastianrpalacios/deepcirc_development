@@ -1,0 +1,676 @@
+{
+	"name": "m0x3E",
+	"inputFilename": "/content/input/0x3E.v",
+	"placements": 
+	[
+		[
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group1_Object0",
+						"node": "$4",
+						"direction": 1,
+						"parts": 
+						[
+							"pBetI",
+							"pAmeR",
+							"P1_PhlF_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object1",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pBM3R1",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object2",
+						"node": "$1",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pPsrA",
+							"B2_BM3R1_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object3",
+						"node": "$5",
+						"direction": 1,
+						"parts": 
+						[
+							"pTac",
+							"E1_BetI_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object4",
+						"node": "$6",
+						"direction": 1,
+						"parts": 
+						[
+							"pTet",
+							"pBetI",
+							"F1_AmeR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object5",
+						"node": "$2",
+						"direction": 1,
+						"parts": 
+						[
+							"pPhlF",
+							"pPsrA",
+							"Q2_QacR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object6",
+						"node": "$3",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pTet",
+							"R1_PsrA_cassette",
+						],
+					},
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group2_Object0",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pQacR",
+							"YFP_cassette",
+						],
+					},
+				],
+			},
+		],
+		[
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group1_Object0",
+						"node": "$4",
+						"direction": 1,
+						"parts": 
+						[
+							"pBetI",
+							"pAmeR",
+							"P1_PhlF_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object1",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pBM3R1",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object2",
+						"node": "$1",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pPsrA",
+							"B2_BM3R1_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object3",
+						"node": "$5",
+						"direction": 1,
+						"parts": 
+						[
+							"pTac",
+							"E1_BetI_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object4",
+						"node": "$6",
+						"direction": 1,
+						"parts": 
+						[
+							"pTet",
+							"pBetI",
+							"F1_AmeR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object5",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pQacR",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object6",
+						"node": "$2",
+						"direction": 1,
+						"parts": 
+						[
+							"pPhlF",
+							"pPsrA",
+							"Q2_QacR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object7",
+						"node": "$3",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pTet",
+							"R1_PsrA_cassette",
+						],
+					},
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+		],
+		[
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group1_Object0",
+						"node": "$4",
+						"direction": 1,
+						"parts": 
+						[
+							"pBetI",
+							"pAmeR",
+							"P1_PhlF_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object1",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pBM3R1",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object2",
+						"node": "$1",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pPsrA",
+							"B2_BM3R1_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object3",
+						"node": "$5",
+						"direction": 1,
+						"parts": 
+						[
+							"pTac",
+							"E1_BetI_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object4",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pQacR",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object5",
+						"node": "$6",
+						"direction": 1,
+						"parts": 
+						[
+							"pTet",
+							"pBetI",
+							"F1_AmeR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object6",
+						"node": "$2",
+						"direction": 1,
+						"parts": 
+						[
+							"pPhlF",
+							"pPsrA",
+							"Q2_QacR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object7",
+						"node": "$3",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pTet",
+							"R1_PsrA_cassette",
+						],
+					},
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+		],
+		[
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group1_Object0",
+						"node": "$4",
+						"direction": 1,
+						"parts": 
+						[
+							"pBetI",
+							"pAmeR",
+							"P1_PhlF_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object1",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pBM3R1",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object2",
+						"node": "$1",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pPsrA",
+							"B2_BM3R1_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object3",
+						"node": "$5",
+						"direction": 1,
+						"parts": 
+						[
+							"pTac",
+							"E1_BetI_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object4",
+						"node": "$6",
+						"direction": 1,
+						"parts": 
+						[
+							"pTet",
+							"pBetI",
+							"F1_AmeR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object5",
+						"node": "$2",
+						"direction": 1,
+						"parts": 
+						[
+							"pPhlF",
+							"pPsrA",
+							"Q2_QacR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object6",
+						"node": "$3",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pTet",
+							"R1_PsrA_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object7",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pQacR",
+							"YFP_cassette",
+						],
+					},
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+		],
+		[
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+					{
+						"name": "Group1_Object0",
+						"node": "$4",
+						"direction": 1,
+						"parts": 
+						[
+							"pBetI",
+							"pAmeR",
+							"P1_PhlF_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object1",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pBM3R1",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object2",
+						"node": "$1",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pPsrA",
+							"B2_BM3R1_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object3",
+						"node": "$5",
+						"direction": 1,
+						"parts": 
+						[
+							"pTac",
+							"E1_BetI_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object4",
+						"node": "$6",
+						"direction": 1,
+						"parts": 
+						[
+							"pTet",
+							"pBetI",
+							"F1_AmeR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object5",
+						"node": "$2",
+						"direction": 1,
+						"parts": 
+						[
+							"pPhlF",
+							"pPsrA",
+							"Q2_QacR_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object6",
+						"node": "out",
+						"direction": 1,
+						"parts": 
+						[
+							"pQacR",
+							"YFP_cassette",
+						],
+					},
+					{
+						"name": "Group1_Object7",
+						"node": "$3",
+						"direction": 1,
+						"parts": 
+						[
+							"pBAD",
+							"pTet",
+							"R1_PsrA_cassette",
+						],
+					},
+				],
+			},
+			{
+				"name": "",
+				"components": 
+				[
+				],
+			},
+		],
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "B2_BM3R1",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "YFP_reporter",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "Q2_QacR",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "AraC_sensor",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "R1_PsrA",
+		},
+		{
+			"name": "$4",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "P1_PhlF",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "TetR_sensor",
+		},
+		{
+			"name": "$5",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "E1_BetI",
+		},
+		{
+			"name": "$6",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "F1_AmeR",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "LacI_sensor",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+			"idx": -1,
+		},
+		{
+			"name": "e2__$2_out",
+			"src": "$2",
+			"dst": "out",
+			"idx": -1,
+		},
+		{
+			"name": "e3__in1_$1",
+			"src": "in1",
+			"dst": "$1",
+			"idx": 0,
+		},
+		{
+			"name": "e4__$3_$1",
+			"src": "$3",
+			"dst": "$1",
+			"idx": 1,
+		},
+		{
+			"name": "e5__$3_$2",
+			"src": "$3",
+			"dst": "$2",
+			"idx": 1,
+		},
+		{
+			"name": "e6__$4_$2",
+			"src": "$4",
+			"dst": "$2",
+			"idx": 0,
+		},
+		{
+			"name": "e7__in1_$3",
+			"src": "in1",
+			"dst": "$3",
+			"idx": 0,
+		},
+		{
+			"name": "e8__in2_$3",
+			"src": "in2",
+			"dst": "$3",
+			"idx": 1,
+		},
+		{
+			"name": "e9__$5_$4",
+			"src": "$5",
+			"dst": "$4",
+			"idx": 0,
+		},
+		{
+			"name": "e10__$6_$4",
+			"src": "$6",
+			"dst": "$4",
+			"idx": 1,
+		},
+		{
+			"name": "e11__in2_$6",
+			"src": "in2",
+			"dst": "$6",
+			"idx": 0,
+		},
+		{
+			"name": "e12__$5_$6",
+			"src": "$5",
+			"dst": "$6",
+			"idx": 1,
+		},
+		{
+			"name": "e13__in3_$5",
+			"src": "in3",
+			"dst": "$5",
+			"idx": -1,
+		},
+	],
+},

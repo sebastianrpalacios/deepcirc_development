@@ -1,0 +1,31 @@
+digraph m0x75 {
+label="m0x75"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in3";"in1";"in2";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR
+P2_PhlF"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT
+YFP_reporter"]
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT
+LacI_sensor"]
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT
+AraC_sensor"]
+"$2" [shape=box, label="$2
+NOT
+A1_AmtR"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT
+TetR_sensor"]
+"$1" -> "out"
+"in3" -> "out"
+"in1" -> "$1"
+"$2" -> "$1"
+"in2" -> "$2"
+}

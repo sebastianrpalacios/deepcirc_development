@@ -1,0 +1,6 @@
+$2,false,true,false,false
+$1,false,false,true,false
+in1,false,true,false,true
+in2,false,false,true,true
+$3,true,false,false,false
+out,false,true,true,false

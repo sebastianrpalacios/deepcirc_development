@@ -1,0 +1,14 @@
+read_verilog /content/input/0x4D.v
+flatten
+splitnets -ports
+hierarchy -auto-top
+proc
+techmap
+opt
+abc -g NOR
+opt
+hierarchy -auto-top
+opt_clean -purge
+show -format pdf -prefix /content/output/0x4D/0x4D_yosys
+write_edif /content/output/0x4D/0x4D.edif
+write_json /content/output/0x4D/0x4D.json

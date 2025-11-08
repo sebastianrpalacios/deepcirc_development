@@ -1,0 +1,133 @@
+{
+	"name": "m0x18",
+	"inputFilename": "/home/user/input/0x18.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$4",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$5",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+		{
+			"name": "$6",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+		},
+		{
+			"name": "e2__$2_$1",
+			"src": "$2",
+			"dst": "$1",
+		},
+		{
+			"name": "e3__$3_$1",
+			"src": "$3",
+			"dst": "$1",
+		},
+		{
+			"name": "e4__in3_$2",
+			"src": "in3",
+			"dst": "$2",
+		},
+		{
+			"name": "e5__in1_$2",
+			"src": "in1",
+			"dst": "$2",
+		},
+		{
+			"name": "e6__$4_$3",
+			"src": "$4",
+			"dst": "$3",
+		},
+		{
+			"name": "e7__$5_$3",
+			"src": "$5",
+			"dst": "$3",
+		},
+		{
+			"name": "e8__in3_$4",
+			"src": "in3",
+			"dst": "$4",
+		},
+		{
+			"name": "e9__in2_$4",
+			"src": "in2",
+			"dst": "$4",
+		},
+		{
+			"name": "e10__in1_$5",
+			"src": "in1",
+			"dst": "$5",
+		},
+		{
+			"name": "e11__$6_$5",
+			"src": "$6",
+			"dst": "$5",
+		},
+		{
+			"name": "e12__in2_$6",
+			"src": "in2",
+			"dst": "$6",
+		},
+	],
+},

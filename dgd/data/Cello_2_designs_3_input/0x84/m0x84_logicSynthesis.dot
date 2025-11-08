@@ -1,0 +1,43 @@
+digraph m0x84 {
+label="m0x84"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in2";"in3";"in1";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT"]
+"$2" [shape=box, label="$2
+NOR"]
+"$3" [shape=box, label="$3
+NOR"]
+"$4" [shape=box, label="$4
+NOR"]
+"$5" [shape=box, label="$5
+NOT"]
+"$6" [shape=box, label="$6
+NOT"]
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT"]
+"in3Point" [ shape=point ]
+"in3" -> "in3Point":w
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT"]
+"in1Point" [ shape=point ]
+"in1" -> "in1Point":w
+"$1" -> "out"
+"in2" -> "$1"
+"$2" -> "$1"
+"$3" -> "$2"
+"$4" -> "$2"
+"$5" -> "$4"
+"$6" -> "$4"
+"in3Point":e -> "$3"
+"in1Point":e -> "$3"
+"in1Point":e -> "$6"
+"in3Point":e -> "$5"
+}

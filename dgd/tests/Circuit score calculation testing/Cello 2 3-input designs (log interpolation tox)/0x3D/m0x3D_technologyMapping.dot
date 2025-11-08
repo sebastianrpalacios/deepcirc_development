@@ -1,0 +1,52 @@
+digraph m0x3D {
+label="m0x3D"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in1";"in2";"in3";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOR
+P2_PhlF"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT
+YFP_reporter"]
+"$2" [shape=box, label="$2
+NOR
+Q2_QacR"]
+"$3" [shape=box, label="$3
+NOR
+S4_SrpR"]
+"$4" [shape=box, label="$4
+NOR
+E1_BetI"]
+"$4Point" [ shape=point ]
+"$4" -> "$4Point":w
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT
+AraC_sensor"]
+"in1Point" [ shape=point ]
+"in1" -> "in1Point":w
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT
+TetR_sensor"]
+"in2Point" [ shape=point ]
+"in2" -> "in2Point":w
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT
+LacI_sensor"]
+"$5" [shape=box, label="$5
+NOT
+A1_AmtR"]
+"$1" -> "out"
+"$2" -> "out"
+"$3" -> "$1"
+"$4Point":e -> "$1"
+"in1Point":e -> "$2"
+"$4Point":e -> "$2"
+"in1Point":e -> "$4"
+"in2Point":e -> "$4"
+"in3" -> "$3"
+"$5" -> "$3"
+"in2Point":e -> "$5"
+}

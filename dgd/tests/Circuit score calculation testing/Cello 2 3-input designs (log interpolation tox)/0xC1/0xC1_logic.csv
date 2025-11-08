@@ -1,0 +1,11 @@
+$7,true,true,false,false,true,true,false,false
+$4,true,true,true,true,false,false,false,false
+$5,true,false,true,false,true,false,true,false
+out,true,false,true,false,false,false,false,true
+$3,false,false,false,false,true,false,true,false
+$6,false,false,false,false,false,false,true,true
+$1,true,false,true,false,false,false,false,true
+in2,false,false,false,false,true,true,true,true
+in1,false,true,false,true,false,true,false,true
+in3,false,false,true,true,false,false,true,true
+$2,false,true,false,true,false,true,false,false

@@ -1,0 +1,14 @@
+read_verilog /home/user/input/0x34.v
+flatten
+splitnets -ports
+hierarchy -auto-top
+proc
+techmap
+opt
+abc -g NOR
+opt
+hierarchy -auto-top
+opt_clean -purge
+show -format pdf -prefix /home/user/output/0x34_yosys
+write_edif /home/user/output/0x34.edif
+write_json /home/user/output/0x34.json

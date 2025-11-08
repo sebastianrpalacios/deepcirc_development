@@ -1,0 +1,1 @@
+/tmp/cello_8167377925575789546/abc -c "read /content/output/0x95/netSynth/Blif_File_InvEsABC.blif; strash;  rewrite; refactor; balance; write /content/output/0x95/netSynth/abcOutput.bench; quit"

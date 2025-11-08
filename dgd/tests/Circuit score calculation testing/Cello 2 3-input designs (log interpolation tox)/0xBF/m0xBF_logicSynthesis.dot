@@ -1,0 +1,28 @@
+digraph m0xBF {
+label="m0xBF"
+rankdir="LR"
+remincross=true
+splines=ortho
+{rank = same; "in1";"in2";"in3";}
+{rank = same; "out";}
+"$1" [shape=box, label="$1
+NOT"]
+"out" [shape=octagon, label="out
+PRIMARY_OUTPUT"]
+"in1" [shape=octagon, label="in1
+PRIMARY_INPUT"]
+"$2" [shape=box, label="$2
+NOR"]
+"in2" [shape=octagon, label="in2
+PRIMARY_INPUT"]
+"$3" [shape=box, label="$3
+NOT"]
+"in3" [shape=octagon, label="in3
+PRIMARY_INPUT"]
+"$1" -> "out"
+"in1" -> "out"
+"$2" -> "$1"
+"in2" -> "$2"
+"$3" -> "$2"
+"in3" -> "$3"
+}

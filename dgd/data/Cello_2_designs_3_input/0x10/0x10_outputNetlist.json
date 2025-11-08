@@ -1,0 +1,107 @@
+{
+	"name": "m0x10",
+	"inputFilename": "/home/user/input/0x10.v",
+	"placements": 
+	[
+	],
+	"nodes": 
+	[
+		{
+			"name": "$1",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "P2_PhlF",
+		},
+		{
+			"name": "out",
+			"nodeType": "PRIMARY_OUTPUT",
+			"partitionID": -1,
+			"deviceName": "YFP_reporter",
+		},
+		{
+			"name": "in1",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "AraC_sensor",
+		},
+		{
+			"name": "$2",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "A1_AmtR",
+		},
+		{
+			"name": "$3",
+			"nodeType": "NOR",
+			"partitionID": -1,
+			"deviceName": "B2_BM3R1",
+		},
+		{
+			"name": "$4",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "R1_PsrA",
+		},
+		{
+			"name": "$5",
+			"nodeType": "NOT",
+			"partitionID": -1,
+			"deviceName": "S4_SrpR",
+		},
+		{
+			"name": "in3",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "LacI_sensor",
+		},
+		{
+			"name": "in2",
+			"nodeType": "PRIMARY_INPUT",
+			"partitionID": -1,
+			"deviceName": "TetR_sensor",
+		},
+	],
+	"edges": 
+	[
+		{
+			"name": "e1__$1_out",
+			"src": "$1",
+			"dst": "out",
+		},
+		{
+			"name": "e2__in1_$1",
+			"src": "in1",
+			"dst": "$1",
+		},
+		{
+			"name": "e3__$2_$1",
+			"src": "$2",
+			"dst": "$1",
+		},
+		{
+			"name": "e4__$3_$2",
+			"src": "$3",
+			"dst": "$2",
+		},
+		{
+			"name": "e5__$4_$3",
+			"src": "$4",
+			"dst": "$3",
+		},
+		{
+			"name": "e6__$5_$3",
+			"src": "$5",
+			"dst": "$3",
+		},
+		{
+			"name": "e7__in3_$5",
+			"src": "in3",
+			"dst": "$5",
+		},
+		{
+			"name": "e8__in2_$4",
+			"src": "in2",
+			"dst": "$4",
+		},
+	],
+},
