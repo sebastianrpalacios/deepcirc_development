@@ -1,0 +1,1 @@
+Selected /home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/dgd/data/NIGs_4_inputs/0x0F07_NIG_unoptimized.pkl
