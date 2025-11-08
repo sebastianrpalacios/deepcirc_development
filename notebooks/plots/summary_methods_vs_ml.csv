@@ -1,0 +1,6 @@
+method,label,N_used,Win,Loss,Tie,Win_%,Loss_%,Tie_%,N_missing
+trained,DeepCirc,0,0,0,0,0.0,0.0,0.0,62
+trained_sampling0,No weighted sampling,0,0,0,0,0.0,0.0,0.0,62
+trained_no_registry,No registry,0,0,0,0,0.0,0.0,0.0,62
+trained_unmasked,No masking,0,0,0,0,0.0,0.0,0.0,62
+random,Random (masked),0,0,0,0,0.0,0.0,0.0,62
