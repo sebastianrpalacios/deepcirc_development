@@ -1,2 +1,0 @@
-circuit_hex,graph_index,sim_hex,tt_hex,eq_sim_tt,eq_sim_initial,eq_tt_initial,eq_sim_circuit,eq_tt_circuit,all_equal
-0x53D7,0,0x53D7,0x53D7,True,True,True,True,True,True

@@ -1,4 +1,0 @@
-Rank,Circuit Score,Toxicity Score,Roadblocking,Permutation
-1,1.0729414526636096,0.7603115283949716,False,[15  2 17 13  1  0  5]
-2,1.0,0.7518504435127575,False,[10 15  0  2  8  1  5]
-3,1.0,0.7509941478202101,False,[19  0  4  1  2 10  9]
