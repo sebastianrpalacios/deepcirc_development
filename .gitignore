@@ -1,0 +1,12 @@
+
+# Ignore job logs
+*.log
+slurm-*.out
+dgd/data/gate_permutations/*.h5
+manuscript/trained_agents/**/*.pkl
+manuscript/logic synthesis simulated annealing/**/
+best_model/
+checkpoints/
+shared_registry*.pkl
+stratch/
+manuscript/

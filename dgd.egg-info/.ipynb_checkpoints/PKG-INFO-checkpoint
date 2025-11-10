@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: dgd
+Version: 0.0.1
+Summary: Deep genetic designer
+License: MIT License
+Keywords: artificial intelligence,biological circuit design
+Classifier: Development Status :: Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE
