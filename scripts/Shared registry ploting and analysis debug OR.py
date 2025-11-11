@@ -365,6 +365,69 @@ def validate_ttable_to_actions(motifs=UNIQUE_GRAPHS, lookup=TTABLE_TO_ACTIONS):
 #validate_ttable_to_actions(UNIQUE_GRAPHS, TTABLE_TO_ACTIONS)
 
 # %%
+
+def apply_nor_not_to_or_by_degree(G: nx.DiGraph) -> nx.DiGraph:
+    """
+    Detects a NOR->NOT chain feeding an output (node with out_degree == 0) and
+    replaces it with direct edges from the NOR's two inputs to the output
+    (i.e., OR). Gate types are inferred purely from in-degrees:
+
+      - Input: in_degree == 0
+      - NOT:   in_degree == 1
+      - NOR:   in_degree == 2
+      - Output: out_degree == 0
+
+    Rules:
+      - Only triggers when the output has exactly one predecessor (the NOT).
+      - The NOT must have exactly one predecessor (the NOR).
+      - The NOR must have exactly two predecessors (its inputs).
+    """
+    H = G.copy()
+
+    # Identify outputs
+    outputs = [n for n in H if H.out_degree(n) == 0]
+
+    for out in outputs:
+        preds_out = list(H.predecessors(out))
+        if len(preds_out) != 1:
+            continue  # only handle single NOT feeding the output
+
+        not_node = preds_out[0]
+        if H.in_degree(not_node) != 1:
+            continue  # NOT must have exactly 1 input
+
+        # The NOT's single predecessor should be a NOR
+        not_inputs = list(H.predecessors(not_node))
+        if len(not_inputs) != 1:
+            continue
+        nor_node = not_inputs[0]
+
+        if H.in_degree(nor_node) != 2:
+            continue  # NOR must have exactly 2 inputs
+
+        # Capture NOR inputs before mutations
+        nor_inputs = list(H.predecessors(nor_node))
+        if len(nor_inputs) != 2:
+            continue  # safety (graph may have changed mid-iteration)
+
+        # Remove NOT->output edge (if present) and delete NOR/NOT nodes
+        if H.has_edge(not_node, out):
+            H.remove_edge(not_node, out)
+
+        # Remove the NOR and NOT nodes (and all incident edges)
+        # Order doesn't matter because we cached `nor_inputs`.
+        if nor_node in H:
+            H.remove_node(nor_node)
+        if not_node in H:
+            H.remove_node(not_node)
+
+        # Wire each former NOR input directly into the output (OR)
+        for src in nor_inputs:
+            if src != out:           # avoid accidental self-loop
+                H.add_edge(src, out) # DiGraph ignores duplicate edges
+
+    return H
+
 def build_motif_canonicals():
     """
     Compute canonical form for every motif in global UNIQUE_GRAPHS and
@@ -372,9 +435,8 @@ def build_motif_canonicals():
     """
     global UNIQUE_GRAPHS_canonical
     bar = tqdm(UNIQUE_GRAPHS, desc="Canonicalising motifs", unit="motif")
-    UNIQUE_GRAPHS_canonical = [_apply_implicit_or(g.copy()) for g in bar]
-    print(f"Built canonical bank for {len(UNIQUE_GRAPHS_canonical)} motifs.")
-    
+    UNIQUE_GRAPHS_canonical = [apply_nor_not_to_or_by_degree(g.copy()) for g in bar]
+    print(f"Built canonical bank for {len(UNIQUE_GRAPHS_canonical)} motifs.")    
     
 def build_motif_canonicals_pruned():
     """
@@ -385,12 +447,11 @@ def build_motif_canonicals_pruned():
 
     bar = tqdm(UNIQUE_GRAPHS, desc="Canonicalising + pruning", unit="motif")
     UNIQUE_GRAPHS_canonical_pruned = [
-        remove_redundant_edges(_apply_implicit_or(g).copy())  
+        remove_redundant_edges(apply_nor_not_to_or_by_degree(g).copy())  
         for g in bar
     ]
     print(f"Built *pruned* canonical bank for {len(UNIQUE_GRAPHS_canonical_pruned)} motifs.")
     
-
 def check_vs_motif_bank(graphs):
     """
     For each graph in `graphs`, report whether it is isomorphic to any
@@ -894,7 +955,7 @@ for circuit_hex in circuits_hex_list:
     #run_dir = f"/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/fine_tune/GAT_MLP_with_scalars/4000nn/initial_state_sampling_factor_0/4_inputs/50_000_steps_registry_processed/{circuit_hex}/seed_1"
     
     #scratch experimental 
-    run_dir = f"/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/experimental/scratch_training_registry_processed/{circuit_hex}/seed_1"  
+    run_dir = f"/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/experimental/scratch_training copy/{circuit_hex}/seed_1"  
         
     run_dir = Path(run_dir)
     
@@ -1030,11 +1091,11 @@ for circuit_hex in circuits_hex_list:
     comparison2_df
     
     
-    comparison3 = compare_to_motif_bank_perm(unique_graphs, verbose = True)
+    #comparison3 = compare_to_motif_bank_perm(unique_graphs, verbose = True)
 
-    comparison3_df = pd.DataFrame(comparison3)
+    #comparison3_df = pd.DataFrame(comparison3)
 
-    comparison3_df     
+    #comparison3_df     
     
     #Check that all methods are the same
     df1 = pd.DataFrame(comparison)
@@ -1281,7 +1342,7 @@ for circuit_hex in circuits_hex_list:
         )        
 
 summary_df = pd.DataFrame(summary_rows)
-out_csv = Path("/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/shared_registry_analysis") / "Fig. experimental sizes scratch 3 and 4 input circuits plus hex verification and validation seed 1 (automated analysis).csv"
+out_csv = Path("/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/shared_registry_analysis") / "Fig. experimental sizes scratch 3 and 4 input circuits plus hex verification and validation seed 1 DEBUG (automated analysis).csv"
 summary_df.to_csv(out_csv, index=False)
 print(f"Saved per-circuit summary to {out_csv}")
 

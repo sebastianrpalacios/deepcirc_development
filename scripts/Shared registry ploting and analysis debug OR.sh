@@ -10,9 +10,9 @@ exec > >(tee -a "$OUTPUT_FOLDER/slurm-${SLURM_JOB_ID}.log") 2>&1
 
 export OPENBLAS_NUM_THREADS=1
 export OMP_NUM_THREADS=1 
-
+""
 source /etc/profile
 module load anaconda/2023a-pytorch
 
-python "Shared registry ploting and analysis.py"
+python "Shared registry ploting and analysis debug OR.py"
 
