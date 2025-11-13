@@ -14,5 +14,5 @@ export OMP_NUM_THREADS=1
 source /etc/profile
 module load anaconda/2023a-pytorch
 
-python "Shared registry ploting and analysis debug OR.py"
+python "Shared registry ploting and analysis v2.py"
 

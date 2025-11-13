@@ -16,6 +16,7 @@ from dgd.utils.utils5 import (
     generate_one_hot_features_from_adj,
     resize_matrix,
     energy_score,
+    energy_score_general,
     check_implicit_OR_existence_v3,
     add_implicit_OR_to_dag_v2,
     exhaustive_cut_enumeration_dag,
@@ -366,9 +367,9 @@ def validate_ttable_to_actions(motifs=UNIQUE_GRAPHS, lookup=TTABLE_TO_ACTIONS):
 
 # %%
 
-def apply_nor_not_to_or_by_degree(G: nx.DiGraph) -> nx.DiGraph:
+def apply_implicit_or_using_simple_nor_not_motif(G: nx.DiGraph) -> nx.DiGraph:
     """
-    Detects a NOR->NOT chain feeding an output (node with out_degree == 0) and
+    Detects a NOR->NOT motif feeding an output (node with out_degree == 0) and
     replaces it with direct edges from the NOR's two inputs to the output
     (i.e., OR). Gate types are inferred purely from in-degrees:
 
@@ -382,75 +383,105 @@ def apply_nor_not_to_or_by_degree(G: nx.DiGraph) -> nx.DiGraph:
       - The NOT must have exactly one predecessor (the NOR).
       - The NOR must have exactly two predecessors (its inputs).
     """
-    H = G.copy()
+    G_canonical = G.copy()
 
     # Identify outputs
-    outputs = [n for n in H if H.out_degree(n) == 0]
+    outputs = [n for n in G_canonical if G_canonical.out_degree(n) == 0]
 
     for out in outputs:
-        preds_out = list(H.predecessors(out))
+        preds_out = list(G_canonical.predecessors(out))
         if len(preds_out) != 1:
             continue  # only handle single NOT feeding the output
 
         not_node = preds_out[0]
-        if H.in_degree(not_node) != 1:
+        if G_canonical.in_degree(not_node) != 1:
             continue  # NOT must have exactly 1 input
 
         # The NOT's single predecessor should be a NOR
-        not_inputs = list(H.predecessors(not_node))
+        not_inputs = list(G_canonical.predecessors(not_node))
         if len(not_inputs) != 1:
             continue
         nor_node = not_inputs[0]
 
-        if H.in_degree(nor_node) != 2:
+        if G_canonical.in_degree(nor_node) != 2:
             continue  # NOR must have exactly 2 inputs
 
         # Capture NOR inputs before mutations
-        nor_inputs = list(H.predecessors(nor_node))
+        nor_inputs = list(G_canonical.predecessors(nor_node))
         if len(nor_inputs) != 2:
             continue  # safety (graph may have changed mid-iteration)
 
         # Remove NOT->output edge (if present) and delete NOR/NOT nodes
-        if H.has_edge(not_node, out):
-            H.remove_edge(not_node, out)
+        if G_canonical.has_edge(not_node, out):
+            G_canonical.remove_edge(not_node, out)
 
         # Remove the NOR and NOT nodes (and all incident edges)
         # Order doesn't matter because we cached `nor_inputs`.
-        if nor_node in H:
-            H.remove_node(nor_node)
-        if not_node in H:
-            H.remove_node(not_node)
+        if nor_node in G_canonical:
+            G_canonical.remove_node(nor_node)
+        if not_node in G_canonical:
+            G_canonical.remove_node(not_node)
 
         # Wire each former NOR input directly into the output (OR)
         for src in nor_inputs:
             if src != out:           # avoid accidental self-loop
-                H.add_edge(src, out) # DiGraph ignores duplicate edges
+                G_canonical.add_edge(src, out) # DiGraph ignores duplicate edges
 
-    return H
+    return G_canonical
+
+def canonical_graph_transform_all_methods(g):
+    """Return canonical graph using the c1-on-tie energy rule."""
+    c1 = apply_implicit_or_using_simple_nor_not_motif(g.copy())
+    c2 = _apply_implicit_or(g.copy())
+    e1 = energy_score_general(c1)[0]
+    e2 = energy_score_general(c2)[0]
+    return c1 if e1 <= e2 else c2
 
 def build_motif_canonicals():
     """
-    Compute canonical form for every motif in global UNIQUE_GRAPHS and
-    store them in UNIQUE_GRAPHS_canonical, with a progress bar.
+    Compute canonical form for every motif in global UNIQUE_GRAPHS using two methods
+    and store the smaller result in UNIQUE_GRAPHS_canonical, with a progress bar.
+    Preference on exact ties goes to c1.
     """
-    global UNIQUE_GRAPHS_canonical
-    bar = tqdm(UNIQUE_GRAPHS, desc="Canonicalising motifs", unit="motif")
-    UNIQUE_GRAPHS_canonical = [apply_nor_not_to_or_by_degree(g.copy()) for g in bar]
-    print(f"Built canonical bank for {len(UNIQUE_GRAPHS_canonical)} motifs.")    
+    global UNIQUE_GRAPHS, UNIQUE_GRAPHS_canonical
+
+    UNIQUE_GRAPHS_canonical = []
+    for g in tqdm(UNIQUE_GRAPHS, desc="Canonicalising motifs", unit="motif"):
+        
+        # Search for OR motifs using factor cuts
+        c1 = apply_implicit_or_using_simple_nor_not_motif(g.copy())
+        
+        # Search for simple motif NOR --> NOT
+        c2 = _apply_implicit_or(g.copy())
+
+        # Compute scores 
+        e1 = energy_score_general(c1)[0] 
+        e2 = energy_score_general(c2)[0] 
+
+        # Choose smaller by energy; on tie, pick c1
+        chosen = c1 if e1 <= e2 else c2
+        UNIQUE_GRAPHS_canonical.append(chosen)
+
+    print(f"Built canonical bank for {len(UNIQUE_GRAPHS_canonical)} motifs.")
     
 def build_motif_canonicals_pruned():
     """
     Canonicalise + prune every motif in the global UNIQUE_GRAPHS list and
     store the results in UNIQUE_GRAPHS_canonical_pruned.
     """
-    global UNIQUE_GRAPHS_canonical_pruned
+    global UNIQUE_GRAPHS_canonical, UNIQUE_GRAPHS_canonical_pruned
+    
+    if not isinstance(UNIQUE_GRAPHS_canonical, list) or len(UNIQUE_GRAPHS_canonical) == 0:
+        raise RuntimeError(
+            "UNIQUE_GRAPHS_canonical is empty or not built. "
+            "Run build_motif_canonicals() first."
+        )    
 
-    bar = tqdm(UNIQUE_GRAPHS, desc="Canonicalising + pruning", unit="motif")
+    bar = tqdm(UNIQUE_GRAPHS_canonical, desc="Pruning", unit="motif")
     UNIQUE_GRAPHS_canonical_pruned = [
-        remove_redundant_edges(apply_nor_not_to_or_by_degree(g).copy())  
-        for g in bar
+        remove_redundant_edges(g.copy()) for g in bar
     ]
-    print(f"Built *pruned* canonical bank for {len(UNIQUE_GRAPHS_canonical_pruned)} motifs.")
+    print(f"Built pruned canonical bank for {len(UNIQUE_GRAPHS_canonical_pruned)} motifs.")
     
 def check_vs_motif_bank(graphs):
     """
@@ -569,8 +600,8 @@ def compare_to_motif_bank(unique_graphs, *,verbose = False, plotting = False, ma
     if matching_idxs:
         best_bank_energy = float("inf")
         for j in matching_idxs:
-            e = energy_score(UNIQUE_GRAPHS[j],
-                            check_implicit_OR_existence_v3)[0]
+            #e = energy_score(UNIQUE_GRAPHS[j], check_implicit_OR_existence_v3)[0]
+            e = energy_score_general(UNIQUE_GRAPHS_canonical[j])[0]
             bank_energy_cache[j] = e
             best_bank_energy = min(best_bank_energy, e)
 
@@ -578,7 +609,8 @@ def compare_to_motif_bank(unique_graphs, *,verbose = False, plotting = False, ma
     results = []
     for idx, g in enumerate(
             tqdm(unique_graphs, desc="Scoring candidates", unit="graph")):
-        own_e = energy_score(g, check_implicit_OR_existence_v3)[0]
+        #own_e = energy_score(g, check_implicit_OR_existence_v3)[0]
+        own_e = energy_score_general(g)[0]
         delta = None if best_bank_energy is None else own_e - best_bank_energy
         results.append(dict(
             idx=idx, key=ref_key,
@@ -591,7 +623,8 @@ def compare_to_motif_bank(unique_graphs, *,verbose = False, plotting = False, ma
     if plotting and matching_idxs:
         for j in matching_idxs[:max_plots_per_key]:
             bank_g  = UNIQUE_GRAPHS[j]
-            canon_g = _apply_implicit_or(bank_g)
+            #canon_g = _apply_implicit_or(bank_g)
+            canon_g  = UNIQUE_GRAPHS_canonical[j]
             e_bank  = bank_energy_cache[j]
 
             fig, axes = plt.subplots(1, 2, figsize=(7, 3))
@@ -630,13 +663,15 @@ def compare_to_motif_bank_simple(unique_graphs, *, verbose = False):
 
     # -- 2) Compute energies --------------------------------------------------
     bank_energies: Dict[int, float] = {
-        j: energy_score(UNIQUE_GRAPHS[j], check_implicit_OR_existence_v3)[0]
+        #j: energy_score(UNIQUE_GRAPHS[j], check_implicit_OR_existence_v3)[0]
+        j: energy_score_general(UNIQUE_GRAPHS_canonical[j])[0]
         for j in bank_idxs
     }
     best_bank_energy = min(bank_energies.values()) if bank_energies else None
 
     candidate_energies = [
-        energy_score(g, check_implicit_OR_existence_v3)[0] for g in unique_graphs
+        #energy_score(g, check_implicit_OR_existence_v3)[0] for g in unique_graphs
+        energy_score_general(g)[0] for g in unique_graphs
     ]
 
     # -- 3) Assemble *results* list ------------------------------------------
@@ -682,10 +717,15 @@ def compare_to_motif_bank_perm(unique_graphs, *, verbose=False):
         print(f"Truth-table key: {ref_key}\nBank motif indices: {bank_idxs}\n")
 
     # 2) compute energies
-    bank_energies = {j: energy_score(UNIQUE_GRAPHS[j], check_implicit_OR_existence_v3)[0]  for j in bank_idxs}
+    #bank_energies = {j: energy_score(UNIQUE_GRAPHS[j], check_implicit_OR_existence_v3)[0]  for j in bank_idxs}
+    bank_energies = {j: energy_score_general(UNIQUE_GRAPHS_canonical[j])[0]  for j in bank_idxs}
+    
+    
     best_bank_energy = min(bank_energies.values()) if bank_energies else None
 
-    candidate_energies = [energy_score(g, check_implicit_OR_existence_v3)[0] for g in unique_graphs]
+    #candidate_energies = [energy_score(g, check_implicit_OR_existence_v3)[0] for g in unique_graphs]
+    candidate_energies = [energy_score_general(g)[0] for g in unique_graphs]
+    
 
     # 3) assemble results
     results = []
@@ -812,7 +852,7 @@ circuits_hex_list = [
 ]
 '''
 
-'''
+
 #Random 111 4-input screen
 circuits_hex_list = [
 "0x000D",
@@ -926,7 +966,6 @@ circuits_hex_list = [
 "0xF4E7",
 "0xF5A4",
 "0xFC79"]
-'''
 
 
 #fine-tuning
@@ -942,20 +981,20 @@ circuits_hex_list = ["0x0239", "0x040B", "0x0575", "0x0643", "0x0760", "0x09AF",
 '''
 
 #Experimental 
-circuits_hex_list = ["0x2B", "0x2C", "0x4D", "0x6F", "0x7B", "0xE3", "0x00BF", "0x00F7", "0x0F07", "0x00FB"]
+#circuits_hex_list = ["0x2B", "0x2C", "0x4D", "0x6F", "0x7B", "0xE3", "0x00BF", "0x00F7", "0x0F07", "0x00FB"]
 
 for circuit_hex in circuits_hex_list:
     
     print(f"Circuit hex is {circuit_hex}")
     
     #scratch
-    #run_dir = f"/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/scratch_training/4in_registry_processed/{circuit_hex}/seed_1"
+    run_dir = f"/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/scratch_training/4in_registry_processed/{circuit_hex}/seed_1"
     
     #fine-tuning    
     #run_dir = f"/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/fine_tune/GAT_MLP_with_scalars/4000nn/initial_state_sampling_factor_0/4_inputs/50_000_steps_registry_processed/{circuit_hex}/seed_1"
     
-    #scratch experimental 
-    run_dir = f"/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/experimental/scratch_training copy/{circuit_hex}/seed_1"  
+    #scratch experimental     
+    #run_dir = f"/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/experimental/scratch_training copy/{circuit_hex}/seed_1"  
         
     run_dir = Path(run_dir)
     
@@ -1342,7 +1381,7 @@ for circuit_hex in circuits_hex_list:
         )        
 
 summary_df = pd.DataFrame(summary_rows)
-out_csv = Path("/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/shared_registry_analysis") / "Fig. experimental sizes scratch 3 and 4 input circuits plus hex verification and validation seed 1 DEBUG (automated analysis).csv"
+out_csv = Path("/home/gridsan/spalacios/Designing complex biological circuits with deep neural networks/manuscript/shared_registry_analysis") / "2025-11-13 Fig. 2 sizes 111 random 4 input circuits stratch plus hex verification and validation seed 1 (automated analysis).csv"
 summary_df.to_csv(out_csv, index=False)
 print(f"Saved per-circuit summary to {out_csv}")
 

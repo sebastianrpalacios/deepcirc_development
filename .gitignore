@@ -10,3 +10,4 @@ checkpoints/
 shared_registry*.pkl
 stratch/
 manuscript/
+manuscript_v2/

@@ -3514,7 +3514,7 @@ def is_fanout_free_standalone(G, target_node, cut):
 
 
 def energy_score(G: nx.DiGraph, implicit_or_fn,*,fanin_size: int = 2) -> Tuple[int, Dict[str, Any]]:
-    """Return an *energy* cost for a circuit graph.
+    """Return an energy cost for a circuit graph assuming factor cuts to identify OR patterns.
 
     Parameters
     ----------
@@ -3567,6 +3567,32 @@ def energy_score(G: nx.DiGraph, implicit_or_fn,*,fanin_size: int = 2) -> Tuple[i
         num_outputs=len(output_nodes),
         max_removal=max_removal,
         best_pattern_key=best_key,
+    )
+    return energy, details
+
+def energy_score_general(G):
+    """    
+    Return an energy cost for any method.    
+    """
+
+    if G.number_of_nodes() == 0:
+        raise ValueError("Graph must contain at least one node")
+
+    # 1) Identify primary outputs (sink nodes)
+    output_nodes = [n for n in G.nodes() if G.out_degree(n) == 0]
+    if not output_nodes:
+        raise ValueError("Graph has no sink/output nodes")
+
+    # 2) Identify primary inputs (source nodes)
+    input_nodes = [n for n in G.nodes() if G.in_degree(n) == 0]
+
+    # 4) Compute energy
+    energy = G.number_of_nodes() - len(input_nodes) - len(output_nodes)
+
+    details = dict(
+        num_nodes=G.number_of_nodes(),
+        num_inputs=len(input_nodes),
+        num_outputs=len(output_nodes)
     )
     return energy, details
 
