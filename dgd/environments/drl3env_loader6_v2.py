@@ -43,7 +43,7 @@ def _compute_truth_key(g):
     bits = "".join(str(o[0]) for _, o in sorted(tt.items()))
     return (len(tt).bit_length() - 1, int(bits, 2))
 
-def _apply_implicit_or_using_nor_not_motif(G: nx.DiGraph) -> nx.DiGraph:
+def _apply_implicit_or_using_nor_not_motif(G):
 
     G_canonical = G.copy()
 

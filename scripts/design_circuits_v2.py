@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+# Implementation of DeepCirc 2.0
 from __future__ import annotations
 
 print("Importing modules")
@@ -67,7 +67,7 @@ from dgd.environments.drl3env_loader6_v2 import DRL3env
 from dgd.environments.drl3env_loader6_v2 import _canonical_graph_transform as _apply_implicit_or
 from dgd.environments.drl3env_loader6_v2 import _compute_hash, _compute_truth_key, _canon_and_energy
 
-from dgd.utils.utils5 import energy_score, energy_score_general, check_implicit_OR_existence_v3
+from dgd.utils.utils5 import energy_score_general
 # ## Specify binary and biological inputs
 
 from collections import deque
