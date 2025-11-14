@@ -9,13 +9,15 @@ from typing import List, Dict
 from tqdm.notebook import tqdm   
 import numpy as np        
 
-from dgd.environments.drl3env_loader6 import _apply_implicit_or, _compute_hash, _compute_truth_key
+from dgd.environments.drl3env_loader6_v2 import _compute_hash, _compute_truth_key
+from dgd.environments.drl3env_loader6_v2 import _canonical_graph_transform as _apply_implicit_or
+from dgd.environments.drl3env_loader6_v2 import _apply_implicit_or_using_nor_not_motif, _apply_implicit_or_using_factor_cuts
+
 
 from dgd.utils.utils5 import (
     calculate_truth_table_v2,
     generate_one_hot_features_from_adj,
     resize_matrix,
-    energy_score,
     energy_score_general,
     check_implicit_OR_existence_v3,
     add_implicit_OR_to_dag_v2,
@@ -227,7 +229,7 @@ def prune_and_plot_optimal_v2(reg, verify_canon_transformation = True, verbose =
 
     for canon, orig in best_pairs:
         if verify_canon_transformation:
-            rebuilt_canon = _apply_implicit_or(orig)
+            rebuilt_canon = _apply_implicit_or(orig.copy())
             if not nx.is_isomorphic(rebuilt_canon, canon):
                 print("Mismatch: stored canon ≠ _apply_implicit_or(orig)")
             else:
@@ -272,8 +274,7 @@ def energies_from_log(txt_file):
         
         E_orig, _ = energy_score_general(G)
 
-        #canon = _apply_implicit_or(G)
-        canon = canonical_graph_transform_all_methods(G)
+        canon = _apply_implicit_or(G)
         E_canon, _ = energy_score_general(canon)
 
         hex_id = Path(fp).name.split("_")[0]
@@ -369,76 +370,6 @@ def validate_ttable_to_actions(motifs=UNIQUE_GRAPHS, lookup=TTABLE_TO_ACTIONS):
 
 # %%
 
-def apply_implicit_or_using_simple_nor_not_motif(G: nx.DiGraph) -> nx.DiGraph:
-    """
-    Detects a NOR->NOT motif feeding an output (node with out_degree == 0) and
-    replaces it with direct edges from the NOR's two inputs to the output
-    (i.e., OR). Gate types are inferred purely from in-degrees:
-
-      - Input: in_degree == 0
-      - NOT:   in_degree == 1
-      - NOR:   in_degree == 2
-      - Output: out_degree == 0
-
-    Rules:
-      - Only triggers when the output has exactly one predecessor (the NOT).
-      - The NOT must have exactly one predecessor (the NOR).
-      - The NOR must have exactly two predecessors (its inputs).
-    """
-    G_canonical = G.copy()
-
-    # Identify outputs
-    outputs = [n for n in G_canonical if G_canonical.out_degree(n) == 0]
-
-    for out in outputs:
-        preds_out = list(G_canonical.predecessors(out))
-        if len(preds_out) != 1:
-            continue  # only handle single NOT feeding the output
-
-        not_node = preds_out[0]
-        if G_canonical.in_degree(not_node) != 1:
-            continue  # NOT must have exactly 1 input
-
-        # The NOT's single predecessor should be a NOR
-        not_inputs = list(G_canonical.predecessors(not_node))
-        if len(not_inputs) != 1:
-            continue
-        nor_node = not_inputs[0]
-
-        if G_canonical.in_degree(nor_node) != 2:
-            continue  # NOR must have exactly 2 inputs
-
-        # Capture NOR inputs before mutations
-        nor_inputs = list(G_canonical.predecessors(nor_node))
-        if len(nor_inputs) != 2:
-            continue  # safety (graph may have changed mid-iteration)
-
-        # Remove NOT->output edge (if present) and delete NOR/NOT nodes
-        if G_canonical.has_edge(not_node, out):
-            G_canonical.remove_edge(not_node, out)
-
-        # Remove the NOR and NOT nodes (and all incident edges)
-        # Order doesn't matter because we cached `nor_inputs`.
-        if nor_node in G_canonical:
-            G_canonical.remove_node(nor_node)
-        if not_node in G_canonical:
-            G_canonical.remove_node(not_node)
-
-        # Wire each former NOR input directly into the output (OR)
-        for src in nor_inputs:
-            if src != out:           # avoid accidental self-loop
-                G_canonical.add_edge(src, out) # DiGraph ignores duplicate edges
-
-    return G_canonical
-
-def canonical_graph_transform_all_methods(g):
-    """Return canonical graph using the c1-on-tie energy rule."""
-    c1 = apply_implicit_or_using_simple_nor_not_motif(g.copy())
-    c2 = _apply_implicit_or(g.copy())
-    e1 = energy_score_general(c1)[0]
-    e2 = energy_score_general(c2)[0]
-    return c1 if e1 <= e2 else c2
-
 def build_motif_canonicals():
     """
     Compute canonical form for every motif in global UNIQUE_GRAPHS using two methods
@@ -450,19 +381,10 @@ def build_motif_canonicals():
     UNIQUE_GRAPHS_canonical = []
     for g in tqdm(UNIQUE_GRAPHS, desc="Canonicalising motifs", unit="motif"):
         
-        # Search for OR motifs using factor cuts
-        c1 = apply_implicit_or_using_simple_nor_not_motif(g.copy())
-        
-        # Search for simple motif NOR --> NOT
-        c2 = _apply_implicit_or(g.copy())
+        # Search for OR motifs and replace
+        g_cannon = _apply_implicit_or(g.copy)        
 
-        # Compute scores 
-        e1 = energy_score_general(c1)[0] 
-        e2 = energy_score_general(c2)[0] 
-
-        # Choose smaller by energy; on tie, pick c1
-        chosen = c1 if e1 <= e2 else c2
-        UNIQUE_GRAPHS_canonical.append(chosen)
+        UNIQUE_GRAPHS_canonical.append(g_cannon)
 
     print(f"Built canonical bank for {len(UNIQUE_GRAPHS_canonical)} motifs.")
     
@@ -485,7 +407,7 @@ def build_motif_canonicals_pruned():
     ]
     print(f"Built pruned canonical bank for {len(UNIQUE_GRAPHS_canonical_pruned)} motifs.")
     
-def check_vs_motif_bank(graphs):
+def check_vs_motif_bank(graphs, save_dir, circuit_hex):
     """
     For each graph in `graphs`, report whether it is isomorphic to any
     canonical motif.  Shows a progress bar over the input list.
@@ -494,8 +416,11 @@ def check_vs_motif_bank(graphs):
         build_motif_canonicals()
 
     new_count = 0
+    iso_flags = []
+    
     bar = tqdm(enumerate(graphs, 1), total=len(graphs), desc="Matching", unit="graph")
     for idx, g in bar:
+        #canon_g = _apply_implicit_or(g)
         canon_g = g
         
         #match = any(nx.is_isomorphic(canon_g, m) for m in UNIQUE_GRAPHS_canonical)
@@ -505,24 +430,45 @@ def check_vs_motif_bank(graphs):
                 match = True                       # mark it
                 break                              # stop checking further              
         
+        iso_flags.append(match)
+        
         status = "MATCH" if match else "NEW  "
         if not match:                            
             new_count += 1
         bar.set_postfix({"last": status})      # live status in the bar
         print(f"Graph {idx:>2}: {status}   "
-            f"nodes={g.number_of_nodes():>2}  edges={g.number_of_edges():>2}")
-    return new_count 
+              f"nodes={g.number_of_nodes():>2}  edges={g.number_of_edges():>2}")
+    
+    # ---- Save per-graph CSV (optional) --------------------------------------
+    if save_dir is not None:
+        save_dir.mkdir(parents=True, exist_ok=True)
+        rows = [{
+            "circuit_hex": circuit_hex if circuit_hex is not None else "",
+            "graph_index": i,
+            "iso_to_motifs": flag,
+            "NOT_iso_to_motifs": int(not flag),
+        } for i, flag in enumerate(iso_flags)]
+        df = pd.DataFrame(rows)
+        tag = circuit_hex if circuit_hex is not None else "results"
+        out_csv = save_dir / f"{tag}_iso_to_motifs_results_per_graph.csv"
+        df.to_csv(out_csv, index=False)
+        print(f"Saved per-graph iso results to {out_csv}")
+
+    return new_count
 
 
-def check_vs_motif_bank_pruned(graphs):
+def check_vs_motif_bank_pruned(graphs, save_dir = None, circuit_hex = None):
 
     # Build the bank the first time this function is called
     if "UNIQUE_GRAPHS_canonical_pruned" not in globals():
         build_motif_canonicals_pruned()
         
     new_count = 0
+    iso_flags = []
+    
     bar = tqdm(enumerate(graphs, 1), total=len(graphs), desc="Matching", unit="graph")
     for idx, g in bar:
+        #canon_g = _apply_implicit_or(g)
         canon_g = g
         
         #match = any(nx.is_isomorphic(canon_g, m) for m in UNIQUE_GRAPHS_canonical)
@@ -532,14 +478,34 @@ def check_vs_motif_bank_pruned(graphs):
                 match = True                       # mark it
                 break                              # stop checking further              
         
+        iso_flags.append(match)
+        
         status = "MATCH" if match else "NEW  "
         if not match:                           
             new_count += 1                
         bar.set_postfix({"last": status})      # live status in the bar
         print(f"Graph {idx:>2}: {status}   "
-            f"nodes={g.number_of_nodes():>2}  edges={g.number_of_edges():>2}")
+              f"nodes={g.number_of_nodes():>2}  edges={g.number_of_edges():>2}")
         
-    return new_count  
+    # --- Optional: save per-graph CSV next to other outputs -------------------
+    if save_dir is not None:
+        save_dir.mkdir(parents=True, exist_ok=True)
+        rows = []
+        for i, post in enumerate(iso_flags):
+            rows.append({
+                "circuit_hex": circuit_hex if circuit_hex is not None else "",
+                "graph_index": i,
+                "iso_to_motifs_after_pruning": post,
+                "NOT_iso_to_motifs_after_pruning": int(not post),
+            })
+        df = pd.DataFrame(rows)
+        tag = circuit_hex if circuit_hex is not None else "results"
+        out_csv = save_dir / f"{tag}_iso_to_motifs_pruned_results_per_graph.csv"
+        df.to_csv(out_csv, index=False)
+        print(f"Saved per-graph (pruned) iso results to {out_csv}")
+
+    return new_count
+
 def _format_truth_table(tt):
     rows = sorted(tt.items(), key=lambda kv: kv[0])
     lines = [f"  {inp}  →  {out}" for inp, out in rows]
@@ -1088,11 +1054,14 @@ for circuit_hex in circuits_hex_list:
     number_of_smallest_ML_circuits
 
     # %%
-    number_NOT_iso_to_motifs = check_vs_motif_bank(unique_graphs)
+    output_dir = run_dir / "optimal_topologies"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    number_NOT_iso_to_motifs = check_vs_motif_bank(unique_graphs, output_dir, circuit_hex)
     number_NOT_iso_to_motifs
 
     # %%
-    number_NOT_iso_to_motifs_after_pruning = check_vs_motif_bank_pruned(unique_graphs)
+    number_NOT_iso_to_motifs_after_pruning = check_vs_motif_bank_pruned(unique_graphs, output_dir, circuit_hex)
     number_NOT_iso_to_motifs_after_pruning
 
     # %% [markdown]
